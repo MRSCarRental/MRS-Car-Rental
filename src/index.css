@@ -2,95 +2,87 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* MRS Car Rental Design System - Professional Transportation Theme */
 
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 223 84% 5%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 223 84% 5%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 223 84% 5%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Professional warm gold and navy palette */
+    --primary: 33 85% 50%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 33 95% 65%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 223 44% 18%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 33 100% 95%;
+    --accent-foreground: 223 84% 5%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 33 85% 50%;
 
-    --radius: 0.5rem;
+    /* Custom brand colors */
+    --luxury-gold: 33 85% 50%;
+    --luxury-navy: 223 44% 18%;
+    --luxury-cream: 33 100% 98%;
+    --success-green: 142 76% 36%;
+    --warning-amber: 43 96% 56%;
 
-    --sidebar-background: 0 0% 98%;
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--luxury-gold)), hsl(var(--primary-glow)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--luxury-navy) / 0.95), hsl(var(--luxury-navy) / 0.8));
+    --gradient-card: linear-gradient(145deg, hsl(var(--background)), hsl(var(--luxury-cream)));
 
-    --sidebar-foreground: 240 5.3% 26.1%;
+    /* Shadows */
+    --shadow-elegant: 0 10px 25px -5px hsl(var(--luxury-navy) / 0.1);
+    --shadow-card: 0 4px 12px -2px hsl(var(--luxury-navy) / 0.08);
+    --shadow-glow: 0 0 20px hsl(var(--luxury-gold) / 0.3);
 
-    --sidebar-primary: 240 5.9% 10%;
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --radius: 0.75rem;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --background: 223 84% 5%;
+    --foreground: 0 0% 98%;
+    --card: 223 84% 5%;
+    --card-foreground: 0 0% 98%;
+    --popover: 223 84% 5%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 33 95% 65%;
+    --primary-foreground: 223 84% 5%;
+    --secondary: 223 32% 15%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 223 32% 15%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 223 32% 15%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 223 32% 15%;
+    --input: 223 32% 15%;
+    --ring: 33 95% 65%;
+    --luxury-gold: 33 95% 65%;
+    --luxury-navy: 223 32% 15%;
+    --luxury-cream: 223 84% 5%;
   }
 }
 
@@ -100,6 +92,101 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Hero Section */
+  .hero-section {
+    @apply bg-gradient-to-br from-luxury-navy via-luxury-navy to-secondary;
+    @apply text-white min-h-screen flex items-center relative overflow-hidden;
+  }
+
+  .hero-overlay {
+    @apply absolute inset-0 bg-gradient-to-r from-luxury-navy/90 to-transparent;
+  }
+
+  /* Buttons */
+  .btn-primary {
+    @apply bg-luxury-gold hover:bg-primary-glow text-white font-semibold px-8 py-4 rounded-lg;
+    @apply shadow-lg hover:shadow-glow transform hover:scale-105 transition-all duration-300;
+  }
+
+  .btn-secondary {
+    @apply bg-white/10 hover:bg-white/20 text-white border-2 border-white/30 hover:border-white/50;
+    @apply font-semibold px-8 py-4 rounded-lg backdrop-blur-sm transition-all duration-300;
+  }
+
+  .btn-outline {
+    @apply border-2 border-luxury-gold text-luxury-gold hover:bg-luxury-gold hover:text-white;
+    @apply font-semibold px-6 py-3 rounded-lg transition-all duration-300;
+  }
+
+  /* Cards */
+  .fleet-card {
+    @apply bg-card rounded-xl shadow-card hover:shadow-elegant;
+    @apply transform hover:scale-105 transition-all duration-300 overflow-hidden;
+  }
+
+  .testimonial-card {
+    @apply bg-gradient-to-br from-white to-luxury-cream p-6 rounded-xl shadow-card;
+    @apply border border-luxury-gold/20 transform hover:scale-105 transition-all duration-300;
+  }
+
+  /* Form Styles */
+  .form-input {
+    @apply w-full px-4 py-3 rounded-lg border border-input bg-background;
+    @apply focus:ring-2 focus:ring-luxury-gold focus:border-luxury-gold transition-colors;
+  }
+
+  .form-select {
+    @apply w-full px-4 py-3 rounded-lg border border-input bg-background;
+    @apply focus:ring-2 focus:ring-luxury-gold focus:border-luxury-gold transition-colors appearance-none;
+  }
+
+  /* Navigation */
+  .nav-link {
+    @apply text-foreground hover:text-luxury-gold transition-colors duration-200 font-medium;
+    @apply relative after:content-[''] after:absolute after:w-full after:h-0.5;
+    @apply after:bg-luxury-gold after:left-0 after:-bottom-1 after:scale-x-0;
+    @apply after:transition-transform after:duration-300 hover:after:scale-x-100;
+  }
+
+  .nav-link.active {
+    @apply text-luxury-gold after:scale-x-100;
+  }
+
+  /* Sticky Header */
+  .header-sticky {
+    @apply fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md shadow-sm;
+    @apply transition-all duration-300;
+  }
+
+  /* Back to Top */
+  .back-to-top {
+    @apply fixed bottom-8 right-8 z-40 bg-luxury-gold hover:bg-primary-glow;
+    @apply text-white p-3 rounded-full shadow-lg hover:shadow-glow;
+    @apply transform hover:scale-110 transition-all duration-300;
+  }
+
+  /* WhatsApp Button */
+  .whatsapp-btn {
+    @apply bg-success-green hover:bg-success-green/90 text-white;
+    @apply flex items-center gap-2 px-6 py-3 rounded-lg font-semibold;
+    @apply shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300;
+  }
+
+  /* Status Badges */
+  .badge-success {
+    @apply bg-success-green/10 text-success-green px-3 py-1 rounded-full text-sm font-medium;
+  }
+
+  .badge-warning {
+    @apply bg-warning-amber/10 text-warning-amber px-3 py-1 rounded-full text-sm font-medium;
   }
 }
