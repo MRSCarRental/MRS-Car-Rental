@@ -223,8 +223,7 @@ export default function Inventory() {
                 <Car className="h-8 w-8 text-luxury-gold" />
               </div>
               <h3 className="text-xl font-bold text-luxury-navy mb-2">Saloon Cars</h3>
-              <p className="text-gray-600 text-sm mb-4">4-seater vehicles perfect for city travel and airport transfers</p>
-              <div className="text-sm text-luxury-gold font-semibold">From ₦15,000/day</div>
+              <p className="text-gray-600 text-sm">4-seater vehicles perfect for city travel and airport transfers</p>
             </div>
 
             <div className="bg-white p-6 rounded-xl shadow-card text-center group hover:shadow-elegant transition-shadow">
@@ -232,8 +231,7 @@ export default function Inventory() {
                 <Car className="h-8 w-8 text-luxury-gold" />
               </div>
               <h3 className="text-xl font-bold text-luxury-navy mb-2">SUVs</h3>
-              <p className="text-gray-600 text-sm mb-4">7-seater luxury vehicles for business and premium travel</p>
-              <div className="text-sm text-luxury-gold font-semibold">From ₦25,000/day</div>
+              <p className="text-gray-600 text-sm">7-seater luxury vehicles for business and premium travel</p>
             </div>
 
             <div className="bg-white p-6 rounded-xl shadow-card text-center group hover:shadow-elegant transition-shadow">
@@ -241,8 +239,7 @@ export default function Inventory() {
                 <Users className="h-8 w-8 text-luxury-gold" />
               </div>
               <h3 className="text-xl font-bold text-luxury-navy mb-2">Hiace (14 seats)</h3>
-              <p className="text-gray-600 text-sm mb-4">Mid-size buses perfect for group transportation and events</p>
-              <div className="text-sm text-luxury-gold font-semibold">From ₦35,000/day</div>
+              <p className="text-gray-600 text-sm">Mid-size buses perfect for group transportation and events</p>
             </div>
 
             <div className="bg-white p-6 rounded-xl shadow-card text-center group hover:shadow-elegant transition-shadow">
@@ -250,8 +247,7 @@ export default function Inventory() {
                 <Users className="h-8 w-8 text-luxury-gold" />
               </div>
               <h3 className="text-xl font-bold text-luxury-navy mb-2">Coaster (25 seats)</h3>
-              <p className="text-gray-600 text-sm mb-4">Large buses ideal for corporate events and group travel</p>
-              <div className="text-sm text-luxury-gold font-semibold">From ₦50,000/day</div>
+              <p className="text-gray-600 text-sm">Large buses ideal for corporate events and group travel</p>
             </div>
           </div>
         </div>
