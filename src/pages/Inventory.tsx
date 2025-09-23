@@ -5,12 +5,17 @@ import saloonCarImage from '@/assets/saloon-car.jpg';
 import suvImage from '@/assets/suv.jpg';
 import hiaceImage from '@/assets/hiace.jpg';
 import coasterImage from '@/assets/coaster.jpg';
+import toyotaCamryImage from '@/assets/toyota-camry.jpg';
+import hondaAccordImage from '@/assets/honda-accord.jpg';
+import hondaPilotImage from '@/assets/honda-pilot.jpg';
+import mercedesEClassImage from '@/assets/mercedes-e-class.jpg';
+import bmw5SeriesImage from '@/assets/bmw-5-series.jpg';
 
 const fleetData = [
   {
     id: 'saloon-1',
     category: 'Saloon Cars',
-    image: saloonCarImage,
+    image: toyotaCamryImage,
     title: 'Toyota Camry',
     description: 'Comfortable and economical choice for city travel and airport transfers.',
     features: ['AC', 'Professional Chauffeur', '4 Seats', 'Fuel Efficient'],
@@ -20,7 +25,7 @@ const fleetData = [
   {
     id: 'saloon-2',
     category: 'Saloon Cars',
-    image: saloonCarImage,
+    image: hondaAccordImage,
     title: 'Honda Accord',
     description: 'Reliable and comfortable sedan perfect for business travel.',
     features: ['AC', 'Professional Chauffeur', '4 Seats', 'Premium Sound'],
@@ -40,7 +45,7 @@ const fleetData = [
   {
     id: 'suv-2',
     category: 'SUVs',
-    image: suvImage,
+    image: hondaPilotImage,
     title: 'Honda Pilot',
     description: 'Premium SUV with advanced features for executive travel.',
     features: ['AC', 'Professional Chauffeur', '7 Seats', 'Leather Seats', 'Entertainment System'],
@@ -50,7 +55,7 @@ const fleetData = [
   {
     id: 'luxury-1',
     category: 'Luxury Sedans',
-    image: saloonCarImage,
+    image: mercedesEClassImage,
     title: 'Mercedes-Benz E-Class',
     description: 'Ultimate luxury experience with top-of-the-line features and service.',
     features: ['AC', 'Professional Chauffeur', '4 Seats', 'Luxury Features', 'Premium Sound'],
@@ -60,7 +65,7 @@ const fleetData = [
   {
     id: 'luxury-2',
     category: 'Luxury Sedans',
-    image: saloonCarImage,
+    image: bmw5SeriesImage,
     title: 'BMW 5 Series',
     description: 'Premium luxury sedan for discerning executives and VIPs.',
     features: ['AC', 'Professional Chauffeur', '4 Seats', 'Premium Leather', 'Advanced Tech'],
@@ -81,7 +86,7 @@ const fleetData = [
     id: 'hiace-2',
     category: 'Hiace (14 seats)',
     image: hiaceImage,
-    title: 'Toyota Hiace Premium',
+    title: 'Toyota Hiace',
     description: 'Enhanced Hiace with premium features for comfortable group travel.',
     features: ['AC', 'Professional Chauffeur', '14 Seats', 'Premium Seats', 'Entertainment'],
     seats: '14 Seats',
@@ -89,27 +94,27 @@ const fleetData = [
   },
   {
     id: 'coaster-1',
-    category: 'Coaster (30+ seats)',
+    category: 'Coaster (25 seats)',
     image: coasterImage,
     title: 'Toyota Coaster',
     description: 'Large capacity bus ideal for corporate events and group transportation.',
-    features: ['AC', 'Professional Chauffeur', '32 Seats', 'Event Transportation', 'Comfortable Seating'],
-    seats: '32 Seats',
-    type: 'Coaster Bus (32 seats)',
+    features: ['AC', 'Professional Chauffeur', '25 Seats', 'Event Transportation', 'Comfortable Seating'],
+    seats: '25 Seats',
+    type: 'Coaster Bus (25 seats)',
   },
   {
     id: 'coaster-2',
-    category: 'Coaster (30+ seats)',
+    category: 'Coaster (25 seats)',
     image: coasterImage,
-    title: 'Toyota Coaster Deluxe',
+    title: 'Toyota Coaster',
     description: 'Deluxe version with enhanced comfort features for longer journeys.',
-    features: ['AC', 'Professional Chauffeur', '30 Seats', 'Premium Comfort', 'Audio System'],
-    seats: '30 Seats',
-    type: 'Coaster Bus (32 seats)',
+    features: ['AC', 'Professional Chauffeur', '25 Seats', 'Premium Comfort', 'Audio System'],
+    seats: '25 Seats',
+    type: 'Coaster Bus (25 seats)',
   },
 ];
 
-const categories = ['All', 'Saloon Cars', 'SUVs', 'Luxury Sedans', 'Hiace (14 seats)', 'Coaster (30+ seats)'];
+const categories = ['All', 'Saloon Cars', 'SUVs', 'Luxury Sedans', 'Hiace (14 seats)', 'Coaster (25 seats)'];
 
 export default function Inventory() {
   const [selectedCategory, setSelectedCategory] = useState('All');
@@ -264,7 +269,7 @@ export default function Inventory() {
               <div className="w-16 h-16 bg-luxury-gold/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-luxury-gold/20 transition-colors">
                 <Users className="h-8 w-8 text-luxury-gold" />
               </div>
-              <h3 className="text-xl font-bold text-luxury-navy mb-2">Coaster (30+ seats)</h3>
+              <h3 className="text-xl font-bold text-luxury-navy mb-2">Coaster (25 seats)</h3>
               <p className="text-gray-600 text-sm mb-4">Large buses ideal for corporate events and group travel</p>
               <div className="text-sm text-luxury-gold font-semibold">From ₦50,000/day</div>
             </div>
