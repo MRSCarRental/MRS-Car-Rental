@@ -7,6 +7,7 @@ import saloonCarImage from '@/assets/saloon-car.jpg';
 import suvImage from '@/assets/suv.jpg';
 import hiaceImage from '@/assets/hiace.jpg';
 import coasterImage from '@/assets/coaster.jpg';
+import mercedesEClassImage from '@/assets/mercedes-e-class.jpg';
 
 const fleetData = [
   {
@@ -27,7 +28,7 @@ const fleetData = [
   },
   {
     id: 'luxury-sedan',
-    image: saloonCarImage,
+    image: mercedesEClassImage,
     title: 'Luxury Sedan',
     description: 'Premium experience with top-of-the-line vehicles and service.',
     features: ['AC', 'Professional Chauffeur', '4 Seats', 'Luxury Features'],
