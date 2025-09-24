@@ -1,15 +1,18 @@
 import { Users, Award, Clock, Shield, Car, MapPin } from 'lucide-react';
+import ceoImage from '@/assets/ceo-rahaman-olawale.jpg';
 
 const teamMembers = [
   {
     name: 'Mr. Rahaman Olawale',
     role: 'Founder & CEO',
     description: 'With more than 15 years of expertise in the transportation industry, our CEO, Mr. Wale, brings visionary leadership and an unwavering commitment to excellence, safety, and customer satisfaction.',
+    image: ceoImage,
   },
   {
     name: 'Mrs. Grace Adebayo',
     role: 'Operations Manager',
     description: 'Grace ensures our daily operations run smoothly and maintains our high standards of customer service.',
+    image: null,
   },
 ];
 
@@ -158,8 +161,18 @@ export default function About() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 justify-center">
             {teamMembers.map((member, index) => (
               <div key={index} className="text-center group">
-                <div className="w-32 h-32 bg-luxury-gold/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-luxury-gold/20 transition-colors">
-                  <Users className="h-16 w-16 text-luxury-gold" />
+                <div className="w-32 h-32 rounded-full mx-auto mb-6 overflow-hidden">
+                  {member.image ? (
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-luxury-gold/10 rounded-full flex items-center justify-center group-hover:bg-luxury-gold/20 transition-colors">
+                      <Users className="h-16 w-16 text-luxury-gold" />
+                    </div>
+                  )}
                 </div>
                 <h3 className="text-xl font-semibold text-luxury-navy mb-2">
                   {member.name}
