@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Phone, MessageCircle, ChevronUp } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import mrsLogo from '@/assets/mrs-logo.png';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -56,10 +57,17 @@ export default function Layout({ children }: LayoutProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <div className="flex justify-start lg:w-0 lg:flex-1">
-              <Link to="/" className="text-2xl font-bold">
-                <span className="text-luxury-gold">MRS</span>{" "}
-                <span className={isScrolled ? "text-luxury-navy" : "text-white"}>
-                  Car Rental
+              <Link to="/" className="flex items-center gap-3">
+                <img 
+                  src={mrsLogo} 
+                  alt="MRS Car Rental Logo" 
+                  className="h-10 w-auto"
+                />
+                <span className="text-2xl font-bold">
+                  <span className="text-luxury-gold">MRS</span>{" "}
+                  <span className={isScrolled ? "text-luxury-navy" : "text-white"}>
+                    Car Rental
+                  </span>
                 </span>
               </Link>
             </div>
@@ -173,6 +181,11 @@ export default function Layout({ children }: LayoutProps) {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="col-span-1 md:col-span-2">
               <div className="flex items-center mb-4">
+                <img 
+                  src={mrsLogo} 
+                  alt="MRS Car Rental Logo" 
+                  className="h-8 w-auto mr-3"
+                />
                 <span className="text-2xl font-bold">
                   <span className="text-luxury-gold">MRS</span> Car Rental
                 </span>
