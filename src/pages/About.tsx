@@ -2,19 +2,14 @@ import { Users, Award, Clock, Shield, Car, MapPin } from 'lucide-react';
 
 const teamMembers = [
   {
-    name: 'Mr. Samuel Richards',
+    name: 'Mr. Rahaman Olawale',
     role: 'Founder & CEO',
-    description: 'With over 15 years in the transportation industry, Samuel founded MRS Car Rental with a vision to provide premium chauffeur services.',
+    description: 'With more than 15 years of expertise in the transportation industry, our CEO, Mr. Wale, brings visionary leadership and an unwavering commitment to excellence, safety, and customer satisfaction.',
   },
   {
     name: 'Mrs. Grace Adebayo',
     role: 'Operations Manager',
     description: 'Grace ensures our daily operations run smoothly and maintains our high standards of customer service.',
-  },
-  {
-    name: 'Mr. David Okafor',
-    role: 'Fleet Manager',
-    description: 'David oversees our vehicle maintenance and ensures our fleet remains in pristine condition.',
   },
 ];
 
@@ -160,7 +155,7 @@ export default function About() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 justify-center">
             {teamMembers.map((member, index) => (
               <div key={index} className="text-center group">
                 <div className="w-32 h-32 bg-luxury-gold/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-luxury-gold/20 transition-colors">
