@@ -65,7 +65,7 @@ const fleetData = [
   {
     id: 'luxury-2',
     category: 'Luxury Sedans',
-    image: mercedesEClassImage,
+    image: bmw5SeriesImage,
     title: 'BMW 5 Series',
     description: 'Premium luxury sedan for discerning executives and VIPs.',
     features: ['AC', 'Professional Chauffeur', '4 Seats', 'Premium Leather', 'Advanced Tech'],
