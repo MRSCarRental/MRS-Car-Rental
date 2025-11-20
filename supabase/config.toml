@@ -1,4 +1,7 @@
-project_id = "tbkmyskoochtyomoprfa"
+project_id = "refqlayhvpwliquwchah"
 
 [functions.create-admin]
+verify_jwt = false
+
+[functions.send-booking-notification]
 verify_jwt = false
