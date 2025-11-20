@@ -14,16 +14,278 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      bookings: {
+        Row: {
+          car_id: string
+          created_at: string | null
+          customer_id: string
+          end_date: string
+          id: string
+          start_date: string
+          status: Database["public"]["Enums"]["booking_status"] | null
+          total_price: number
+        }
+        Insert: {
+          car_id: string
+          created_at?: string | null
+          customer_id: string
+          end_date: string
+          id?: string
+          start_date: string
+          status?: Database["public"]["Enums"]["booking_status"] | null
+          total_price: number
+        }
+        Update: {
+          car_id?: string
+          created_at?: string | null
+          customer_id?: string
+          end_date?: string
+          id?: string
+          start_date?: string
+          status?: Database["public"]["Enums"]["booking_status"] | null
+          total_price?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "bookings_car_id_fkey"
+            columns: ["car_id"]
+            isOneToOne: false
+            referencedRelation: "cars"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "bookings_customer_id_fkey"
+            columns: ["customer_id"]
+            isOneToOne: false
+            referencedRelation: "customers"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      cars: {
+        Row: {
+          created_at: string | null
+          daily_rate: number
+          id: string
+          image_url: string | null
+          make: string
+          model: string
+          plate_number: string
+          status: Database["public"]["Enums"]["car_status"] | null
+          year: number
+        }
+        Insert: {
+          created_at?: string | null
+          daily_rate: number
+          id?: string
+          image_url?: string | null
+          make: string
+          model: string
+          plate_number: string
+          status?: Database["public"]["Enums"]["car_status"] | null
+          year: number
+        }
+        Update: {
+          created_at?: string | null
+          daily_rate?: number
+          id?: string
+          image_url?: string | null
+          make?: string
+          model?: string
+          plate_number?: string
+          status?: Database["public"]["Enums"]["car_status"] | null
+          year?: number
+        }
+        Relationships: []
+      }
+      customers: {
+        Row: {
+          address: string | null
+          created_at: string | null
+          email: string | null
+          id: string
+          name: string
+          phone: string
+        }
+        Insert: {
+          address?: string | null
+          created_at?: string | null
+          email?: string | null
+          id?: string
+          name: string
+          phone: string
+        }
+        Update: {
+          address?: string | null
+          created_at?: string | null
+          email?: string | null
+          id?: string
+          name?: string
+          phone?: string
+        }
+        Relationships: []
+      }
+      messages: {
+        Row: {
+          booking_id: string
+          created_at: string | null
+          id: string
+          message: string
+          user_id: string
+        }
+        Insert: {
+          booking_id: string
+          created_at?: string | null
+          id?: string
+          message: string
+          user_id: string
+        }
+        Update: {
+          booking_id?: string
+          created_at?: string | null
+          id?: string
+          message?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "messages_booking_id_fkey"
+            columns: ["booking_id"]
+            isOneToOne: false
+            referencedRelation: "bookings"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      payments: {
+        Row: {
+          amount: number
+          booking_id: string
+          created_at: string | null
+          id: string
+          method: string | null
+          payment_date: string
+          status: Database["public"]["Enums"]["payment_status"] | null
+        }
+        Insert: {
+          amount: number
+          booking_id: string
+          created_at?: string | null
+          id?: string
+          method?: string | null
+          payment_date: string
+          status?: Database["public"]["Enums"]["payment_status"] | null
+        }
+        Update: {
+          amount?: number
+          booking_id?: string
+          created_at?: string | null
+          id?: string
+          method?: string | null
+          payment_date?: string
+          status?: Database["public"]["Enums"]["payment_status"] | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "payments_booking_id_fkey"
+            columns: ["booking_id"]
+            isOneToOne: false
+            referencedRelation: "bookings"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          created_at: string | null
+          email: string | null
+          full_name: string | null
+          id: string
+        }
+        Insert: {
+          created_at?: string | null
+          email?: string | null
+          full_name?: string | null
+          id: string
+        }
+        Update: {
+          created_at?: string | null
+          email?: string | null
+          full_name?: string | null
+          id?: string
+        }
+        Relationships: []
+      }
+      tasks: {
+        Row: {
+          completed_at: string | null
+          created_at: string | null
+          description: string | null
+          due_date: string | null
+          id: string
+          status: Database["public"]["Enums"]["task_status"] | null
+          title: string
+        }
+        Insert: {
+          completed_at?: string | null
+          created_at?: string | null
+          description?: string | null
+          due_date?: string | null
+          id?: string
+          status?: Database["public"]["Enums"]["task_status"] | null
+          title: string
+        }
+        Update: {
+          completed_at?: string | null
+          created_at?: string | null
+          description?: string | null
+          due_date?: string | null
+          id?: string
+          status?: Database["public"]["Enums"]["task_status"] | null
+          title?: string
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          created_at: string | null
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "staff" | "user"
+      booking_status: "pending" | "confirmed" | "completed" | "cancelled"
+      car_status: "available" | "booked" | "maintenance"
+      payment_status: "pending" | "paid" | "refunded"
+      task_status: "pending" | "in_progress" | "completed"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +412,12 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "staff", "user"],
+      booking_status: ["pending", "confirmed", "completed", "cancelled"],
+      car_status: ["available", "booked", "maintenance"],
+      payment_status: ["pending", "paid", "refunded"],
+      task_status: ["pending", "in_progress", "completed"],
+    },
   },
 } as const
