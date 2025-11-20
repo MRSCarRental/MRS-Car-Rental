@@ -12,6 +12,7 @@ import Faqs from "@/pages/Faqs";
 import Contact from "@/pages/Contact";
 import NotFound from "./pages/NotFound";
 import CrmLogin from "./pages/crm/Login";
+import CrmSetup from "./pages/crm/Setup";
 import CrmDashboard from "./pages/crm/Dashboard";
 import Cars from "./pages/crm/Cars";
 import Customers from "./pages/crm/Customers";
@@ -39,6 +40,7 @@ const App = () => (
           <Route path="/contact" element={<Layout><Contact /></Layout>} />
           
           {/* CRM Routes */}
+          <Route path="/crm/setup" element={<CrmSetup />} />
           <Route path="/crm/login" element={<CrmLogin />} />
           <Route path="/crm/dashboard" element={<CrmDashboard />} />
           <Route path="/crm/cars" element={<Cars />} />
