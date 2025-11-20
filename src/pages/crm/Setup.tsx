@@ -20,32 +20,12 @@ export default function CrmSetup() {
     setLoading(true);
 
     try {
-      // Create user
-      const { data: authData, error: authError } = await supabase.auth.signUp({
-        email,
-        password,
-        options: {
-          data: {
-            full_name: fullName,
-          },
-        },
+      const response = await supabase.functions.invoke('create-admin', {
+        body: { email, password, fullName }
       });
 
-      if (authError) throw authError;
-
-      if (!authData.user) {
-        throw new Error("User creation failed");
-      }
-
-      // Add admin role
-      const { error: roleError } = await supabase
-        .from("user_roles")
-        .insert({
-          user_id: authData.user.id,
-          role: "admin",
-        });
-
-      if (roleError) throw roleError;
+      if (response.error) throw response.error;
+      if (response.data?.error) throw new Error(response.data.error);
 
       toast({
         title: "Setup Complete",
