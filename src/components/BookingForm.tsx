@@ -119,13 +119,37 @@ export default function BookingForm({ preselectedCarType }: BookingFormProps) {
     setIsSubmitting(true);
 
     try {
-      // For now, we'll just show a success message
-      // In a real implementation, this would send to the backend
+      // Send booking notification emails
+      const { supabase } = await import("@/integrations/supabase/client");
       
-      toast({
-        title: "Booking Submitted Successfully!",
-        description: "We'll contact you shortly to confirm your booking.",
+      const { error } = await supabase.functions.invoke('send-booking-notification', {
+        body: {
+          customerName: formData.fullName,
+          customerEmail: formData.email,
+          customerPhone: formData.phoneNumber,
+          pickupLocation: formData.pickupLocation,
+          destination: formData.destination,
+          carType: formData.carType,
+          serviceType: formData.serviceType,
+          date: formData.pickupDate,
+          time: formData.pickupTime,
+          passengers: formData.passengers,
+          specialRequests: formData.specialRequests
+        }
       });
+
+      if (error) {
+        console.error("Error sending notification:", error);
+        toast({
+          title: "Booking Submitted",
+          description: "Your booking was submitted but we couldn't send the confirmation email. We'll contact you shortly.",
+        });
+      } else {
+        toast({
+          title: "Booking Confirmed!",
+          description: "We've sent a confirmation email to " + formData.email,
+        });
+      }
       
       setShowSuccess(true);
       
@@ -136,6 +160,7 @@ export default function BookingForm({ preselectedCarType }: BookingFormProps) {
       }, 5000);
       
     } catch (error) {
+      console.error("Booking submission error:", error);
       toast({
         title: "Booking Failed",
         description: "Please try again or contact us directly.",
