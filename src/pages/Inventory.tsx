@@ -260,7 +260,7 @@ export default function Inventory() {
             <div className="relative">
               <img
                 src={selectedVehicle.image}
-                alt={selectedVehicle.title}
+                alt={`${selectedVehicle.title} - ${selectedVehicle.type} available for chauffeur-driven rental in Lagos and Abuja`}
                 className="w-full h-64 object-cover rounded-t-xl"
               />
               <button
