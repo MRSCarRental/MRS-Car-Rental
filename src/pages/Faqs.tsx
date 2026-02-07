@@ -109,6 +109,23 @@ const faqData = [
   },
 ];
 
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "name": "Car Hire & Rental FAQs - Lagos & Abuja",
+  "description": "Frequently asked questions about car hire service in Lagos and Abuja.",
+  "mainEntity": faqData.flatMap(category =>
+    category.questions.map(q => ({
+      "@type": "Question",
+      "name": q.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": q.answer
+      }
+    }))
+  )
+};
+
 export default function Faqs() {
   const [openItems, setOpenItems] = useState<Record<string, boolean>>({});
 
@@ -122,6 +139,7 @@ export default function Faqs() {
 
   return (
     <div className="min-h-screen pt-20">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       {/* Hero Section */}
       <section className="py-20 bg-luxury-navy text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
