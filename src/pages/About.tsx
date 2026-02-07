@@ -165,7 +165,7 @@ export default function About() {
                   {member.image ? (
                     <img
                       src={member.image}
-                      alt={member.name}
+                      alt={`Portrait of ${member.name}, ${member.role} at MRS Car Rental`}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                     />
                   ) : (
