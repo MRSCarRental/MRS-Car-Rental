@@ -62,6 +62,37 @@ const process = [
   },
 ];
 
+const servicesJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "MRS Car Rental - Car Hire Service in Lagos & Abuja",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "MRS Car Rental",
+    "url": "https://mrscarrental.lovable.app",
+    "telephone": "+2348026149390",
+    "areaServed": [
+      { "@type": "City", "name": "Lagos" },
+      { "@type": "City", "name": "Abuja" }
+    ]
+  },
+  "serviceType": "Car Hire Service",
+  "description": "Premium chauffeur-driven car hire service in Lagos and Abuja. Airport transfers, wedding transportation, corporate events, group travel, city tours, and executive travel.",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Car Hire Services",
+    "itemListElement": services.map((s, i) => ({
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": s.title,
+        "description": s.description
+      },
+      "position": i + 1
+    }))
+  }
+};
+
 export default function Services() {
   const scrollToContact = () => {
     window.location.href = '/contact';
@@ -69,6 +100,7 @@ export default function Services() {
 
   return (
     <div className="min-h-screen pt-20">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesJsonLd) }} />
       {/* Hero Section */}
       <section className="py-20 bg-luxury-navy text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
