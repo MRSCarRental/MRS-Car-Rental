@@ -47,10 +47,10 @@ export default function About() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              About <span className="text-luxury-gold">MRS Car Rental</span>
+              About <span className="text-luxury-gold">MRS Car Rental</span> – Car Hire in Lagos & Abuja
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto">
-              Lagos and Abuja's premier chauffeur-driven transportation company
+              Lagos and Abuja's premier car hire service and chauffeur-driven transportation company
             </p>
           </div>
         </div>
@@ -65,9 +65,9 @@ export default function About() {
                 Our Story
               </h2>
               <p className="text-lg text-gray-700 mb-6">
-                Lagos and Abuja's premier chauffeur-driven transportation Company, 
+                As Lagos and Abuja's premier car hire service, 
                 MRS Car Rental was established with a simple yet powerful vision: 
-                to provide unparalleled transportation services that combine luxury, 
+                to provide unparalleled car rental in Lagos and Abuja that combines luxury, 
                 reliability, and professionalism.
               </p>
               <p className="text-lg text-gray-700 mb-6">
@@ -193,10 +193,10 @@ export default function About() {
       <section className="py-20 bg-luxury-navy text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl font-bold mb-6">
-            Get in Touch
+            Book Our Car Hire Service Today
           </h2>
           <p className="text-xl mb-8 text-gray-300">
-            Ready to experience premium transportation? Contact us today to 
+            Ready to experience the best car hire service in Lagos or Abuja? Contact us today to 
             discuss your requirements or book your next ride.
           </p>
           

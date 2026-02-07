@@ -123,11 +123,11 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="text-left">
               <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-                Premium <span className="text-luxury-gold">Chauffeur-Driven</span> Transport in Lagos & Abuja
+                Premium <span className="text-luxury-gold">Car Hire Service</span> in Lagos & Abuja
               </h1>
               <p className="text-xl md:text-2xl mb-8 text-gray-200">
-                Experience luxury and reliability with MRS Car Rental's professional transportation services. 
-                Available 24/7 for all your travel needs.
+                MRS Car Rental is your trusted car rental in Lagos and Abuja. 
+                Experience luxury chauffeur-driven transportation, available 24/7.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <button
@@ -163,10 +163,10 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-luxury-navy mb-4">
-              Our Premium Fleet
+              Our Premium Car Hire Fleet
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Choose from our diverse range of well-maintained vehicles, 
+              Choose from our diverse range of well-maintained vehicles for car rental in Lagos and Abuja, 
               each designed to provide maximum comfort and reliability for your journey.
             </p>
           </div>
@@ -206,10 +206,10 @@ export default function Home() {
                 About MRS Car Rental
               </h2>
               <p className="text-lg text-gray-700 mb-6">
-                Lagos and Abuja's premier chauffeur-driven transportation company, 
-                MRS Car Rental has been providing exceptional transport services 
-                since our inception. We specialize in luxury car rentals with 
-                professional chauffeurs for all occasions.
+                Lagos and Abuja's premier car hire service, 
+                MRS Car Rental has been providing exceptional car rental in Lagos and Abuja 
+                since our inception. We specialize in luxury chauffeur-driven car hire 
+                with professional drivers for all occasions.
               </p>
               <p className="text-lg text-gray-700 mb-8">
                 From airport transfers to wedding transportation, corporate events 
@@ -251,11 +251,11 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-luxury-navy mb-4">
-              Why Choose MRS Car Rental?
+              Why Choose Our Car Hire Service?
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We go above and beyond to ensure your transportation experience 
-              exceeds expectations every single time.
+              As the leading car hire service in Lagos and Abuja, we go above and beyond 
+              to ensure your transportation experience exceeds expectations every single time.
             </p>
           </div>
 
@@ -327,11 +327,11 @@ export default function Home() {
       <section className="py-20 bg-luxury-navy text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl font-bold mb-6">
-            Ready to Experience Premium Transportation?
+            Ready to Book Your Car Hire in Lagos or Abuja?
           </h2>
           <p className="text-xl mb-8 text-gray-300">
-            Book your ride today and discover why MRS Car Rental is Lagos and Abuja's 
-            most trusted transportation service.
+            Book your ride today and discover why MRS Car Rental is the most trusted 
+            car rental in Lagos and Abuja.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button
