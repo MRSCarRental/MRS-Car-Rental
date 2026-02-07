@@ -127,10 +127,10 @@ export default function Faqs() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Frequently Asked <span className="text-luxury-gold">Questions</span>
+              Car Hire & Rental <span className="text-luxury-gold">FAQs</span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto">
-              Find answers to common questions about our transportation services
+              Find answers to common questions about our car hire service in Lagos and Abuja
             </p>
           </div>
         </div>
@@ -240,11 +240,11 @@ export default function Faqs() {
       <section className="py-20 bg-luxury-navy text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl font-bold mb-6">
-            Ready to Book Your Ride?
+            Ready to Book Your Car Hire?
           </h2>
           <p className="text-xl mb-8 text-gray-300">
-            Now that you have all the information, let's get you moving with 
-            our premium transportation services.
+            Now that you have all the information, book your car rental in Lagos and Abuja 
+            with our premium chauffeur-driven service.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a

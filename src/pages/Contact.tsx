@@ -74,11 +74,11 @@ export default function Contact() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Contact <span className="text-luxury-gold">MRS Car Rental</span>
+              Contact <span className="text-luxury-gold">MRS Car Rental</span> – Car Hire in Lagos & Abuja
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto">
-              Get in touch with us for bookings, inquiries, or any questions 
-              about our premium transportation services
+              Get in touch for car hire bookings, inquiries, or questions 
+              about our car rental services in Lagos and Abuja
             </p>
           </div>
         </div>
@@ -364,11 +364,11 @@ export default function Contact() {
       <section className="py-20 bg-luxury-navy text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl font-bold mb-6">
-            Ready to Experience Premium Transportation?
+            Book Your Car Hire in Lagos or Abuja Today
           </h2>
           <p className="text-xl mb-8 text-gray-300">
-            Don't wait - book your ride today and discover why MRS Car Rental 
-            is Lagos and Abuja's most trusted transportation service.
+            Don't wait — book your car rental in Lagos and Abuja today and discover why 
+            MRS Car Rental is the most trusted car hire service in Nigeria.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a

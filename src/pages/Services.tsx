@@ -74,10 +74,10 @@ export default function Services() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Our <span className="text-luxury-gold">Transportation</span> Services
+              Car Hire <span className="text-luxury-gold">Services</span> in Lagos & Abuja
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto">
-              Comprehensive chauffeur-driven transportation solutions for every occasion
+              Comprehensive car rental in Lagos and Abuja — chauffeur-driven solutions for every occasion
             </p>
           </div>
         </div>
@@ -88,11 +88,11 @@ export default function Services() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-luxury-navy mb-4">
-              What We Offer
+              Our Car Hire & Rental Services
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              From airport transfers to special events, we provide reliable and 
-              professional transportation services tailored to your needs.
+              From airport transfers to special events, our car hire service in Lagos and Abuja 
+              provides reliable, professional transportation tailored to your needs.
             </p>
           </div>
 
@@ -169,10 +169,10 @@ export default function Services() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-luxury-navy mb-4">
-              Service Areas
+              Car Hire Service Areas in Lagos & Abuja
             </h2>
             <p className="text-xl text-gray-600">
-              We proudly serve Nigeria's major business and tourist destinations
+              Our car rental covers Nigeria's major business and tourist destinations
             </p>
           </div>
 

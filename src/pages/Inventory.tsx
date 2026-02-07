@@ -124,11 +124,11 @@ export default function Inventory() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Our Premium <span className="text-luxury-gold">Fleet</span>
+              Cars for <span className="text-luxury-gold">Hire</span> in Lagos & Abuja
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto">
-              Explore our diverse range of well-maintained vehicles, each designed 
-              to provide maximum comfort and reliability for your journey
+              Explore our car rental fleet in Lagos and Abuja — well-maintained vehicles 
+              designed for maximum comfort and reliability
             </p>
           </div>
         </div>
@@ -210,10 +210,10 @@ export default function Inventory() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-luxury-navy mb-4">
-              Vehicle Categories
+              Car Hire Categories
             </h2>
             <p className="text-xl text-gray-600">
-              Choose the perfect vehicle category for your transportation needs
+              Choose the perfect vehicle for your car rental needs in Lagos and Abuja
             </p>
           </div>
 
@@ -327,10 +327,10 @@ export default function Inventory() {
       <section className="py-20 bg-luxury-navy text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl font-bold mb-6">
-            Need Help Choosing?
+            Need Help Choosing Your Car Hire?
           </h2>
           <p className="text-xl mb-8 text-gray-300">
-            Our team is ready to help you select the perfect vehicle for your needs. 
+            Our team is ready to help you find the perfect car rental in Lagos and Abuja. 
             Contact us for personalized recommendations and quotes.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
