@@ -39,9 +39,31 @@ const achievements = [
   },
 ];
 
+const aboutJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "name": "About MRS Car Rental - Car Hire Service in Lagos & Abuja",
+  "description": "Learn about MRS Car Rental, a premier car hire service in Lagos and Abuja with 15+ years of experience in professional chauffeur-driven transportation.",
+  "mainEntity": {
+    "@type": "LocalBusiness",
+    "name": "MRS Car Rental",
+    "url": "https://mrscarrental.lovable.app",
+    "founder": {
+      "@type": "Person",
+      "name": "Mr. Rahaman Olawale",
+      "jobTitle": "Founder & CEO"
+    },
+    "areaServed": [
+      { "@type": "City", "name": "Lagos" },
+      { "@type": "City", "name": "Abuja" }
+    ]
+  }
+};
+
 export default function About() {
   return (
     <div className="min-h-screen pt-20">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutJsonLd) }} />
       {/* Hero Section */}
       <section className="py-20 bg-luxury-navy text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
