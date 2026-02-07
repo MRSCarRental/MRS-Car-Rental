@@ -110,8 +110,38 @@ export default function Home() {
     document.getElementById('booking-form')?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const homeJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "MRS Car Rental",
+    "url": "https://mrscarrental.lovable.app",
+    "telephone": "+2348026149390",
+    "description": "Premium car hire service in Lagos and Abuja. Chauffeur-driven car rental for airport transfers, weddings, corporate events, and executive travel.",
+    "address": [
+      { "@type": "PostalAddress", "addressLocality": "Lagos", "addressCountry": "NG" },
+      { "@type": "PostalAddress", "addressLocality": "Abuja", "addressCountry": "NG" }
+    ],
+    "areaServed": [
+      { "@type": "City", "name": "Lagos" },
+      { "@type": "City", "name": "Abuja" }
+    ],
+    "priceRange": "₦₦",
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "00:00",
+      "closes": "23:59"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5",
+      "reviewCount": "1000"
+    }
+  };
+
   return (
     <div className="min-h-screen">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(homeJsonLd) }} />
       {/* Hero Section */}
       <section className="hero-section">
         <div className="hero-overlay" />
