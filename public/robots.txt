@@ -12,3 +12,6 @@ Allow: /
 
 User-agent: *
 Allow: /
+Disallow: /crm/
+
+Sitemap: https://mrscarrental.com/sitemap.xml
