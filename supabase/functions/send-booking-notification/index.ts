@@ -23,7 +23,6 @@ interface BookingNotificationRequest {
 }
 
 const handler = async (req: Request): Promise<Response> => {
-  // Handle CORS preflight requests
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
   }
@@ -93,12 +92,17 @@ const handler = async (req: Request): Promise<Response> => {
       `,
     });
 
-    console.log("Customer email sent:", customerEmailResponse);
+    console.log("Customer email response:", JSON.stringify(customerEmailResponse));
+
+    // Throw if customer email failed
+    if (customerEmailResponse.error) {
+      throw new Error(`Customer email failed: ${customerEmailResponse.error.message}`);
+    }
 
     // Send notification email to admin/staff
     const adminEmailResponse = await resend.emails.send({
       from: "MRS Car Rental <noreply@mrscarrental.com>",
-      to: ["info@mrscarrental.com"], // Admin email
+      to: ["info@mrscarrental.com"],
       subject: "New Booking Request",
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -130,7 +134,12 @@ const handler = async (req: Request): Promise<Response> => {
       `,
     });
 
-    console.log("Admin email sent:", adminEmailResponse);
+    console.log("Admin email response:", JSON.stringify(adminEmailResponse));
+
+    // Throw if admin email failed
+    if (adminEmailResponse.error) {
+      throw new Error(`Admin email failed: ${adminEmailResponse.error.message}`);
+    }
 
     return new Response(
       JSON.stringify({ 
