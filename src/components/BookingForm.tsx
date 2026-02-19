@@ -195,7 +195,7 @@ export default function BookingForm({ preselectedCarType }: BookingFormProps) {
           </div>
         </div>
         <p className="text-gray-600 mb-4">
-          We'll contact you within 30 minutes to confirm your booking details.
+          Your booking request has been received! Kindly message us on WhatsApp with your booking details to confirm your booking. Thank you!
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a
