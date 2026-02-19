@@ -33,7 +33,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Send email to customer
     const customerEmailResponse = await resend.emails.send({
-      from: "MRS Car Rental <noreply@mrscarrental.com>",
+      from: "MRS Car Rental <onboarding@resend.dev>",
       to: [bookingData.customerEmail],
       subject: "Booking Confirmation - MRS Car Rental",
       html: `
@@ -101,7 +101,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Send notification email to admin/staff
     const adminEmailResponse = await resend.emails.send({
-      from: "MRS Car Rental <noreply@mrscarrental.com>",
+      from: "MRS Car Rental <onboarding@resend.dev>",
       to: ["info@mrscarrental.com"],
       subject: "New Booking Request",
       html: `
