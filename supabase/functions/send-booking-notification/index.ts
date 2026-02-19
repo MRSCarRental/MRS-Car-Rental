@@ -33,7 +33,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Send notification email to admin/staff only
     const adminEmailResponse = await resend.emails.send({
-      from: "MRS Car Rental <onboarding@resend.dev>",
+      from: "MRS Car Rental <noreply@mrscarrental.com>",
       to: ["info@mrscarrental.com"],
       subject: "New Booking Request",
       html: `
