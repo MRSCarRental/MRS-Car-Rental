@@ -31,75 +31,7 @@ const handler = async (req: Request): Promise<Response> => {
     const bookingData: BookingNotificationRequest = await req.json();
     console.log("Received booking notification request for:", bookingData.customerEmail);
 
-    // Send email to customer
-    const customerEmailResponse = await resend.emails.send({
-      from: "MRS Car Rental <onboarding@resend.dev>",
-      to: [bookingData.customerEmail],
-      subject: "Booking Confirmation - MRS Car Rental",
-      html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h1 style="color: #2563eb;">Booking Confirmation</h1>
-          <p>Dear ${bookingData.customerName},</p>
-          <p>Thank you for booking with MRS Car Rental! We have received your booking request with the following details:</p>
-          
-          <div style="background-color: #f3f4f6; padding: 20px; border-radius: 8px; margin: 20px 0;">
-            <h2 style="color: #1f2937; margin-top: 0;">Booking Details</h2>
-            <table style="width: 100%; border-collapse: collapse;">
-              <tr>
-                <td style="padding: 8px 0;"><strong>Pickup Location:</strong></td>
-                <td style="padding: 8px 0;">${bookingData.pickupLocation}</td>
-              </tr>
-              <tr>
-                <td style="padding: 8px 0;"><strong>Destination:</strong></td>
-                <td style="padding: 8px 0;">${bookingData.destination}</td>
-              </tr>
-              <tr>
-                <td style="padding: 8px 0;"><strong>Car Type:</strong></td>
-                <td style="padding: 8px 0;">${bookingData.carType}</td>
-              </tr>
-              <tr>
-                <td style="padding: 8px 0;"><strong>Service Type:</strong></td>
-                <td style="padding: 8px 0;">${bookingData.serviceType}</td>
-              </tr>
-              <tr>
-                <td style="padding: 8px 0;"><strong>Date & Time:</strong></td>
-                <td style="padding: 8px 0;">${bookingData.date} at ${bookingData.time}</td>
-              </tr>
-              <tr>
-                <td style="padding: 8px 0;"><strong>Passengers:</strong></td>
-                <td style="padding: 8px 0;">${bookingData.passengers}</td>
-              </tr>
-              ${bookingData.specialRequests ? `
-              <tr>
-                <td style="padding: 8px 0; vertical-align: top;"><strong>Special Requests:</strong></td>
-                <td style="padding: 8px 0;">${bookingData.specialRequests}</td>
-              </tr>
-              ` : ''}
-            </table>
-          </div>
-
-          <p>Our team will contact you shortly at <strong>${bookingData.customerPhone}</strong> to confirm your booking.</p>
-          
-          <p>If you have any questions, please don't hesitate to contact us.</p>
-          
-          <p style="margin-top: 30px;">Best regards,<br><strong>MRS Car Rental Team</strong></p>
-          
-          <hr style="border: none; border-top: 1px solid #e5e7eb; margin: 30px 0;">
-          <p style="color: #6b7280; font-size: 12px; text-align: center;">
-            MRS Car Rental - Your trusted transportation partner
-          </p>
-        </div>
-      `,
-    });
-
-    console.log("Customer email response:", JSON.stringify(customerEmailResponse));
-
-    // Throw if customer email failed
-    if (customerEmailResponse.error) {
-      throw new Error(`Customer email failed: ${customerEmailResponse.error.message}`);
-    }
-
-    // Send notification email to admin/staff
+    // Send notification email to admin/staff only
     const adminEmailResponse = await resend.emails.send({
       from: "MRS Car Rental <onboarding@resend.dev>",
       to: ["info@mrscarrental.com"],
@@ -144,8 +76,7 @@ const handler = async (req: Request): Promise<Response> => {
     return new Response(
       JSON.stringify({ 
         success: true, 
-        message: "Booking notifications sent successfully",
-        customerEmailId: customerEmailResponse.data?.id,
+        message: "Booking request sent to admin successfully",
         adminEmailId: adminEmailResponse.data?.id
       }),
       {
