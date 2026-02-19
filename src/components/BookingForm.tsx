@@ -103,7 +103,7 @@ export default function BookingForm({ preselectedCarType }: BookingFormProps) {
     return errors;
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
     const errors = validateForm();
@@ -118,53 +118,11 @@ export default function BookingForm({ preselectedCarType }: BookingFormProps) {
 
     setIsSubmitting(true);
 
-    try {
-      // Send booking notification emails
-      const { supabase } = await import("@/integrations/supabase/client");
-      
-      const { error } = await supabase.functions.invoke('send-booking-notification', {
-        body: {
-          customerName: formData.fullName,
-          customerEmail: formData.email,
-          customerPhone: formData.phoneNumber,
-          pickupLocation: formData.pickupLocation,
-          destination: formData.destination,
-          carType: formData.carType,
-          serviceType: formData.serviceType,
-          date: formData.pickupDate,
-          time: formData.pickupTime,
-          passengers: formData.passengers,
-          specialRequests: formData.specialRequests
-        }
-      });
-
-      if (error) {
-        console.error("Error sending notification:", error);
-      }
-
-      toast({
-        title: "Booking Received!",
-        description: "Please message us on WhatsApp to confirm your booking.",
-      });
-      
-      setShowSuccess(true);
-      
-      // Reset form after 5 seconds
-      setTimeout(() => {
-        setShowSuccess(false);
-        setFormData(initialFormData);
-      }, 5000);
-      
-    } catch (error) {
-      console.error("Booking submission error:", error);
-      toast({
-        title: "Booking Failed",
-        description: "Please try again or contact us directly.",
-        variant: "destructive",
-      });
-    } finally {
+    // Show success screen immediately
+    setTimeout(() => {
       setIsSubmitting(false);
-    }
+      setShowSuccess(true);
+    }, 500);
   };
 
   if (showSuccess) {
