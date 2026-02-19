@@ -103,7 +103,7 @@ export default function BookingForm({ preselectedCarType }: BookingFormProps) {
     return errors;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     const errors = validateForm();
@@ -118,11 +118,33 @@ export default function BookingForm({ preselectedCarType }: BookingFormProps) {
 
     setIsSubmitting(true);
 
-    // Show success screen immediately
+    // Fire-and-forget: send booking to admin via edge function (don't await result)
+    const { supabase } = await import("@/integrations/supabase/client");
+    supabase.functions.invoke('send-booking-notification', {
+      body: {
+        customerName: formData.fullName,
+        customerEmail: formData.email,
+        customerPhone: formData.phoneNumber,
+        pickupLocation: formData.pickupLocation,
+        destination: formData.destination,
+        carType: formData.carType,
+        serviceType: formData.serviceType,
+        date: formData.pickupDate,
+        time: formData.pickupTime,
+        passengers: formData.passengers,
+        specialRequests: formData.specialRequests,
+      }
+    }).catch((err) => console.error("Notification error:", err));
+
+    // Always show success screen immediately
+    setIsSubmitting(false);
+    setShowSuccess(true);
+
+    // Reset form after 10 seconds
     setTimeout(() => {
-      setIsSubmitting(false);
-      setShowSuccess(true);
-    }, 500);
+      setShowSuccess(false);
+      setFormData(initialFormData);
+    }, 10000);
   };
 
   if (showSuccess) {

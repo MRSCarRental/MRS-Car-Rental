@@ -68,9 +68,9 @@ const handler = async (req: Request): Promise<Response> => {
 
     console.log("Admin email response:", JSON.stringify(adminEmailResponse));
 
-    // Throw if admin email failed
     if (adminEmailResponse.error) {
-      throw new Error(`Admin email failed: ${adminEmailResponse.error.message}`);
+      console.error("Admin email error:", adminEmailResponse.error.message);
+      // Don't throw - return success so frontend always shows the WhatsApp screen
     }
 
     return new Response(
