@@ -140,16 +140,12 @@ export default function BookingForm({ preselectedCarType }: BookingFormProps) {
 
       if (error) {
         console.error("Error sending notification:", error);
-        toast({
-          title: "Booking Submitted",
-          description: "Your booking was submitted but we couldn't send the confirmation email. We'll contact you shortly.",
-        });
-      } else {
-        toast({
-          title: "Booking Confirmed!",
-          description: "We've sent a confirmation email to " + formData.email,
-        });
       }
+
+      toast({
+        title: "Booking Received!",
+        description: "Please message us on WhatsApp to confirm your booking.",
+      });
       
       setShowSuccess(true);
       
