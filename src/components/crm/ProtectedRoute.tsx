@@ -35,13 +35,12 @@ export default function ProtectedRoute({ children }: { children: React.ReactNode
   };
 
   const checkRole = async (userId: string) => {
-    const { data } = await supabase
-      .from("user_roles")
-      .select("role")
-      .eq("user_id", userId)
-      .in("role", ["admin", "staff"]);
+    const [{ data: isAdmin, error: adminError }, { data: isStaff, error: staffError }] = await Promise.all([
+      supabase.rpc("has_role", { _user_id: userId, _role: "admin" }),
+      supabase.rpc("has_role", { _user_id: userId, _role: "staff" }),
+    ]);
 
-    setHasAccess(!!data && data.length > 0);
+    setHasAccess(!adminError && !staffError && Boolean(isAdmin || isStaff));
     setLoading(false);
   };
 

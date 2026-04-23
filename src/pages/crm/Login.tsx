@@ -26,15 +26,12 @@ export default function CrmLogin() {
 
       if (error) throw error;
 
-      // Check if user has staff or admin role
-      const { data: roleData } = await supabase
-        .from("user_roles")
-        .select("role")
-        .eq("user_id", data.user.id)
-        .in("role", ["admin", "staff"])
-        .single();
+      const [{ data: isAdmin, error: adminError }, { data: isStaff, error: staffError }] = await Promise.all([
+        supabase.rpc("has_role", { _user_id: data.user.id, _role: "admin" }),
+        supabase.rpc("has_role", { _user_id: data.user.id, _role: "staff" }),
+      ]);
 
-      if (!roleData) {
+      if (adminError || staffError || (!isAdmin && !isStaff)) {
         await supabase.auth.signOut();
         toast({
           title: "Access Denied",
