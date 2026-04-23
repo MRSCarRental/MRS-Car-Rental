@@ -321,21 +321,21 @@ export default function Invoices() {
   return (
     <ProtectedRoute>
       <CrmLayout>
-        <div className="space-y-6">
+        <div className="space-y-5 md:space-y-6">
           <div className="space-y-2">
-            <h2 className="text-3xl font-bold tracking-tight">Invoice Generator</h2>
+            <h2 className="text-2xl font-bold tracking-tight md:text-3xl">Invoice Generator</h2>
             <p className="text-muted-foreground">
               Create branded MRS invoices with vehicle details, client information, and PDF export.
             </p>
           </div>
 
-          <div className="grid gap-6 xl:grid-cols-[minmax(0,1.3fr)_minmax(320px,0.9fr)]">
+          <div className="grid gap-5 xl:grid-cols-[minmax(0,1.3fr)_minmax(320px,0.9fr)] xl:items-start">
             <Card>
               <CardHeader>
                 <CardTitle>Invoice details</CardTitle>
                 <CardDescription>Fill in the client, vehicle, payment, and amount information.</CardDescription>
               </CardHeader>
-              <CardContent className="space-y-6">
+              <CardContent className="space-y-5 px-4 pb-4 sm:px-6 sm:pb-6">
                 <div className="grid gap-4 md:grid-cols-2">
                   <div className="space-y-2">
                     <Label htmlFor="invoice-number">Invoice number</Label>
@@ -363,7 +363,7 @@ export default function Invoices() {
                     <ReceiptText className="h-4 w-4 text-primary" />
                     Client information
                   </div>
-                  <div className="grid gap-4 md:grid-cols-2">
+                  <div className="grid gap-3 md:grid-cols-2">
                     <div className="space-y-2 md:col-span-2">
                       <Label htmlFor="client-name">Client name</Label>
                       <Input
@@ -404,8 +404,8 @@ export default function Invoices() {
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="car-option">Select car</Label>
-                    <Select value={form.carId} onValueChange={(value) => handleChange("carId", value)}>
-                      <SelectTrigger id="car-option">
+                     <Select value={form.carId} onValueChange={(value) => handleChange("carId", value)}>
+                      <SelectTrigger id="car-option" className="min-h-11">
                         <SelectValue placeholder="Choose a vehicle" />
                       </SelectTrigger>
                       <SelectContent>
@@ -436,7 +436,7 @@ export default function Invoices() {
                   </div>
                   <div className="rounded-md border border-border bg-accent/40 px-4 py-3">
                     <p className="text-xs uppercase tracking-wide text-muted-foreground">Formatted total</p>
-                    <p className="mt-2 text-2xl font-semibold">{formatCurrency(amountValue || 0)}</p>
+                    <p className="mt-2 break-words text-xl font-semibold sm:text-2xl">{formatCurrency(amountValue || 0)}</p>
                   </div>
                 </div>
 
@@ -476,25 +476,25 @@ export default function Invoices() {
                   </div>
                 </div>
 
-                <Button type="button" className="w-full gap-2" onClick={handleDownload} disabled={isDownloading}>
+                <Button type="button" className="h-11 w-full gap-2" onClick={handleDownload} disabled={isDownloading}>
                   <Download className="h-4 w-4" />
                   {isDownloading ? "Generating PDF..." : "Download invoice PDF"}
                 </Button>
               </CardContent>
             </Card>
 
-            <div className="space-y-6">
+            <div className="space-y-5 xl:sticky xl:top-6">
               <Card className="overflow-hidden">
-                <CardHeader className="border-b border-border bg-accent/40">
-                  <div className="flex items-center gap-4">
-                    <img src={mrsLogo} alt="MRS Car Rental logo" className="h-12 w-auto" />
+                <CardHeader className="border-b border-border bg-accent/40 px-4 py-5 sm:px-6">
+                  <div className="flex items-center gap-3 sm:gap-4">
+                    <img src={mrsLogo} alt="MRS Car Rental logo" className="h-10 w-auto sm:h-12" />
                     <div>
                       <CardTitle>{companyDetails.name}</CardTitle>
                       <CardDescription>Invoice preview</CardDescription>
                     </div>
                   </div>
                 </CardHeader>
-                <CardContent className="space-y-5 p-6">
+                <CardContent className="space-y-5 px-4 py-5 sm:p-6">
                   <div className="grid gap-3 text-sm text-muted-foreground">
                     <div className="flex items-start gap-2">
                       <MapPin className="mt-0.5 h-4 w-4 text-primary" />
@@ -530,7 +530,7 @@ export default function Invoices() {
 
                   <div className="rounded-lg border border-border bg-accent/40 p-4">
                     <p className="text-xs uppercase tracking-wide text-muted-foreground">Amount due</p>
-                    <p className="mt-2 text-3xl font-semibold text-foreground">{formatCurrency(amountValue || 0)}</p>
+                    <p className="mt-2 break-words text-2xl font-semibold text-foreground sm:text-3xl">{formatCurrency(amountValue || 0)}</p>
                   </div>
 
                   <div className="space-y-2 text-sm">
@@ -543,8 +543,8 @@ export default function Invoices() {
               </Card>
 
               <Card className="overflow-hidden">
-                <img src={selectedCar.image} alt={selectedCar.name} className="h-52 w-full object-cover" loading="lazy" />
-                <CardContent className="space-y-4 p-6">
+                <img src={selectedCar.image} alt={selectedCar.name} className="h-44 w-full object-cover sm:h-52" loading="lazy" />
+                <CardContent className="space-y-4 px-4 py-5 sm:p-6">
                   <div>
                     <p className="text-xs uppercase tracking-wide text-muted-foreground">Booked vehicle</p>
                     <h3 className="mt-2 text-xl font-semibold">{selectedCar.name}</h3>
