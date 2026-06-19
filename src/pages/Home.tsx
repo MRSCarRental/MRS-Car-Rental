@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { MessageCircle, Star, Shield, Clock, Users, Car, CheckCircle } from 'lucide-react';
 import BookingForm from '@/components/BookingForm';
 import FleetCard from '@/components/FleetCard';
