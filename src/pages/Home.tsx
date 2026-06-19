@@ -356,7 +356,7 @@ export default function Home() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 bg-muted">
+      <section className="py-20 bg-muted overflow-hidden" ref={testimonialsRef}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-luxury-navy mb-4">
@@ -366,10 +366,15 @@ export default function Home() {
               Don't just take our word for it - hear from our satisfied customers
             </p>
           </div>
+        </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <div key={index} className="testimonial-card">
+        <div className="relative">
+          <div className={`flex gap-6 ${isTestimonialsVisible ? 'animate-marquee' : ''}`}>
+            {[...testimonials, ...testimonials].map((testimonial, index) => (
+              <div
+                key={index}
+                className="testimonial-card flex-shrink-0 w-[350px]"
+              >
                 <div className="flex items-center mb-4">
                   {[...Array(testimonial.rating)].map((_, i) => (
                     <Star key={i} className="h-5 w-5 text-luxury-gold fill-current" />
@@ -389,15 +394,15 @@ export default function Home() {
               </div>
             ))}
           </div>
+        </div>
 
-          <div className="text-center mt-12">
-            <a
-              href="/about"
-              className="btn-outline"
-            >
-              Read More Reviews
-            </a>
-          </div>
+        <div className="text-center mt-12">
+          <a
+            href="/about"
+            className="btn-outline"
+          >
+            Read More Reviews
+          </a>
         </div>
       </section>
 
