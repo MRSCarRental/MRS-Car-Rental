@@ -1,0 +1,14 @@
+# MRS Car Rental
+
+> Premium chauffeur-driven car rental service in Lagos and Abuja, Nigeria, offering luxury sedans, SUVs, and executive vehicles for corporate, airport, and event transportation.
+
+MRS Car Rental provides professional chauffeur-driven vehicle hire across Nigeria, with a focus on Lagos and Abuja. Services include airport pickups, corporate transportation, wedding cars, and long-term executive rentals.
+
+## Pages
+
+- [Home](/): Overview of MRS Car Rental services and featured fleet.
+- [About](/about): Company history, leadership team, and mission.
+- [Services](/services): Chauffeur-driven rental services for corporate, airport, and event needs.
+- [Inventory](/inventory): Available fleet of luxury sedans, SUVs, and executive vehicles.
+- [FAQs](/faqs): Answers to common questions about booking and rental policies.
+- [Contact](/contact): Phone, email, and office address for booking inquiries.
