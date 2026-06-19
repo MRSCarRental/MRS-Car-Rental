@@ -22,7 +22,7 @@ export default function FleetCard({
       <div className="relative overflow-hidden rounded-t-xl h-64">
         <img
           src={image}
-          alt={`${title} - Chauffeur-driven ${seats || 'vehicle'} rental by MRS Car Rental`}
+          alt={`Affordable ${title} car rental in Lagos Nigeria — ${seats || 'vehicle'} chauffeur & self drive hire by MRS Car Rental`}
           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
