@@ -183,6 +183,7 @@ export default function Inventory() {
                 />
                 <button
                   onClick={() => openVehicleModal(vehicle)}
+                  aria-label={`View details for ${vehicle.title}`}
                   className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm text-luxury-navy px-3 py-1 rounded-full text-sm font-medium hover:bg-white transition-colors"
                 >
                   View Details
@@ -265,6 +266,7 @@ export default function Inventory() {
               />
               <button
                 onClick={closeModal}
+                aria-label="Close vehicle details"
                 className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm w-8 h-8 rounded-full flex items-center justify-center text-gray-600 hover:text-gray-800 transition-colors"
               >
                 ×
