@@ -117,14 +117,25 @@ export default function Home() {
     "name": "MRS Car Rental",
     "url": "https://mrscarrental.lovable.app",
     "telephone": "+2348026149390",
-    "description": "Premium car hire service in Lagos and Abuja. Chauffeur-driven car rental for airport transfers, weddings, corporate events, and executive travel.",
+    "description": "Affordable car rental in Lagos Nigeria — self drive, chauffeur, SUV, luxury and airport car hire across Victoria Island, Lekki, Ikoyi, Ikeja, Surulere, Yaba, Ajah, Chevron, Festac, Maryland and Lagos Island. Also serving Abuja.",
     "address": [
       { "@type": "PostalAddress", "addressLocality": "Lagos", "addressCountry": "NG" },
       { "@type": "PostalAddress", "addressLocality": "Abuja", "addressCountry": "NG" }
     ],
     "areaServed": [
       { "@type": "City", "name": "Lagos" },
-      { "@type": "City", "name": "Abuja" }
+      { "@type": "City", "name": "Abuja" },
+      { "@type": "Place", "name": "Victoria Island, Lagos" },
+      { "@type": "Place", "name": "Lekki, Lagos" },
+      { "@type": "Place", "name": "Ikoyi, Lagos" },
+      { "@type": "Place", "name": "Ikeja, Lagos" },
+      { "@type": "Place", "name": "Surulere, Lagos" },
+      { "@type": "Place", "name": "Yaba, Lagos" },
+      { "@type": "Place", "name": "Ajah, Lagos" },
+      { "@type": "Place", "name": "Chevron, Lagos" },
+      { "@type": "Place", "name": "Festac, Lagos" },
+      { "@type": "Place", "name": "Maryland, Lagos" },
+      { "@type": "Place", "name": "Lagos Island, Lagos" }
     ],
     "priceRange": "₦₦",
     "openingHoursSpecification": {
@@ -143,8 +154,8 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       <Seo
-        title="Car Rental Lagos & Abuja | Car Hire Nigeria — MRS"
-        description="Car rental Lagos & Abuja: airport, SUV, luxury, self-drive, chauffeur, wedding & corporate car hire across Nigeria. Daily & monthly rates. Book 24/7."
+        title="Car Rental in Lagos Nigeria | Self Drive & Chauffeur Car Hire"
+        description="Looking for affordable car rental in Lagos Nigeria? Rent SUVs, sedans, luxury cars and self-drive vehicles with airport pickup and chauffeur services at the best prices."
         path="/"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(homeJsonLd) }} />
@@ -159,11 +170,12 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="text-left">
               <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-                <span className="text-luxury-gold">Car Rental in Lagos &amp; Abuja</span> — Car Hire Across Nigeria
+                <span className="text-luxury-gold">Car Rental in Lagos Nigeria</span>
               </h1>
               <p className="text-xl md:text-2xl mb-8 text-gray-200">
-                Affordable, luxury and SUV car hire in Lagos and Abuja with airport pickup,
-                self-drive, chauffeur service, wedding cars and corporate rentals — daily and monthly. Available 24/7.
+                Affordable car hire Lagos — self drive cars Lagos, airport pickup Lagos,
+                luxury car rental, SUV rental Lagos, daily car rental and weekly car rental.
+                Trusted chauffeur service across Lagos and Abuja, available 24/7.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <button
@@ -436,6 +448,38 @@ export default function Home() {
               <h3 className="text-xl font-semibold text-luxury-navy mb-2">Wedding &amp; Corporate Car Rental</h3>
               <p className="text-gray-600">Wedding car rental in Lagos and corporate car rental across Nigeria — luxury sedans, SUVs and group buses for events.</p>
             </div>
+          </div>
+
+          {/* Lagos local-SEO neighborhoods */}
+          <div className="mt-16">
+            <h2 className="text-3xl font-bold text-luxury-navy mb-4 text-center">
+              Car Rental Lagos — Areas We Serve
+            </h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto text-center mb-8">
+              We provide car rental in Lagos and car hire Lagos across every major neighborhood,
+              including same-day delivery and airport pickup Lagos.
+            </p>
+            <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 max-w-4xl mx-auto">
+              {[
+                'Victoria Island','Lekki','Ikoyi','Ikeja','Surulere','Yaba',
+                'Ajah','Chevron','Festac','Maryland','Lagos Island','Murtala Muhammed Airport',
+              ].map((area) => (
+                <li
+                  key={area}
+                  className="bg-luxury-cream text-luxury-navy text-center py-3 px-2 rounded-lg font-medium"
+                >
+                  Car Rental {area}
+                </li>
+              ))}
+            </ul>
+            <p className="text-base text-gray-600 max-w-3xl mx-auto text-center mt-8">
+              Popular searches we serve: car rental Lagos, car rental in Lagos Nigeria, cheap car rental Lagos,
+              self drive car rental Lagos, luxury car rental Lagos, SUV rental Lagos, airport car rental Lagos,
+              executive car rental Lagos, chauffeur service Lagos, rent a car Lagos, monthly car rental Lagos,
+              daily car rental Lagos, Toyota Camry rental Lagos, Toyota Prado rental Lagos, Lexus rental Lagos,
+              wedding car rental Lagos, corporate car rental Lagos, airport pickup Lagos, affordable car hire Lagos
+              and best car rental company Lagos.
+            </p>
           </div>
         </div>
       </section>
