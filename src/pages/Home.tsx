@@ -117,7 +117,7 @@ export default function Home() {
     "name": "MRS Car Rental",
     "url": "https://mrscarrental.lovable.app",
     "telephone": "+2348026149390",
-    "description": "Affordable car rental in Lagos Nigeria — self drive, chauffeur, SUV, luxury and airport car hire across Victoria Island, Lekki, Ikoyi, Ikeja, Surulere, Yaba, Ajah, Chevron, Festac, Maryland and Lagos Island. Also serving Abuja.",
+    "description": "Affordable car rental in Lagos and Abuja Nigeria — chauffeur-driven SUV, luxury, airport, wedding and corporate car hire across Victoria Island, Lekki, Ikoyi, Ikeja, Surulere, Yaba, Ajah, Chevron, Festac, Maryland, Lagos Island and Abuja.",
     "address": [
       { "@type": "PostalAddress", "addressLocality": "Lagos", "addressCountry": "NG" },
       { "@type": "PostalAddress", "addressLocality": "Abuja", "addressCountry": "NG" }
@@ -154,8 +154,8 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       <Seo
-        title="Car Rental in Lagos Nigeria | Self Drive & Chauffeur Car Hire"
-        description="Looking for affordable car rental in Lagos Nigeria? Rent SUVs, sedans, luxury cars and self-drive vehicles with airport pickup and chauffeur services at the best prices."
+        title="Car Rental in Lagos & Abuja Nigeria | Chauffeur Car Hire"
+        description="Affordable car rental in Lagos and Abuja Nigeria. Rent SUVs, sedans and luxury cars with airport pickup, chauffeur, wedding and corporate car hire at the best prices."
         path="/"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(homeJsonLd) }} />
@@ -173,8 +173,8 @@ export default function Home() {
                 <span className="text-luxury-gold">Car Rental in Lagos Nigeria</span>
               </h1>
               <p className="text-xl md:text-2xl mb-8 text-gray-200">
-                Affordable car hire Lagos — self drive cars Lagos, airport pickup Lagos,
-                luxury car rental, SUV rental Lagos, daily car rental and weekly car rental.
+                Affordable car hire in Lagos and Abuja — airport pickup Lagos, airport pickup Abuja,
+                luxury car rental, SUV rental, daily and weekly car rental.
                 Trusted chauffeur service across Lagos and Abuja, available 24/7.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
@@ -429,10 +429,6 @@ export default function Home() {
               <p className="text-gray-600">SUV rental Lagos and luxury car rental Lagos — Toyota Prado, Honda Pilot, Mercedes-Benz E-Class and BMW 5 Series.</p>
             </div>
             <div>
-              <h3 className="text-xl font-semibold text-luxury-navy mb-2">Self Drive Car Rental Lagos &amp; Abuja</h3>
-              <p className="text-gray-600">Flexible self drive car rental in Lagos and self drive car rental in Abuja for travellers who prefer to drive themselves.</p>
-            </div>
-            <div>
               <h3 className="text-xl font-semibold text-luxury-navy mb-2">Chauffeur Service Lagos &amp; Abuja</h3>
               <p className="text-gray-600">Professional chauffeur service in Lagos and chauffeur service in Abuja for executives, VIPs and visiting business travellers.</p>
             </div>
@@ -474,11 +470,14 @@ export default function Home() {
             </ul>
             <p className="text-base text-gray-600 max-w-3xl mx-auto text-center mt-8">
               Popular searches we serve: car rental Lagos, car rental in Lagos Nigeria, cheap car rental Lagos,
-              self drive car rental Lagos, luxury car rental Lagos, SUV rental Lagos, airport car rental Lagos,
-              executive car rental Lagos, chauffeur service Lagos, rent a car Lagos, monthly car rental Lagos,
-              daily car rental Lagos, Toyota Camry rental Lagos, Toyota Prado rental Lagos, Lexus rental Lagos,
-              wedding car rental Lagos, corporate car rental Lagos, airport pickup Lagos, affordable car hire Lagos
-              and best car rental company Lagos.
+              luxury car rental Lagos, luxury car rental Abuja, SUV rental Lagos, SUV rental Abuja,
+              airport car rental Lagos, airport car rental Abuja, executive car rental Lagos,
+              executive car rental Abuja, chauffeur service Lagos, chauffeur service Abuja,
+              rent a car Lagos, rent a car Abuja, monthly car rental Lagos, monthly car rental Abuja,
+              daily car rental Lagos, daily car rental Abuja, Toyota Camry rental Lagos,
+              Toyota Prado rental Abuja, Lexus rental Lagos, wedding car rental Lagos,
+              corporate car rental Abuja, airport pickup Lagos, airport pickup Abuja,
+              affordable car hire Lagos and best car rental company in Lagos and Abuja.
             </p>
           </div>
         </div>
