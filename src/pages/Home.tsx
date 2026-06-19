@@ -143,8 +143,8 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       <Seo
-        title="MRS Car Rental — Car Hire in Lagos & Abuja"
-        description="Chauffeur-driven car hire in Lagos & Abuja. Book saloon cars, SUVs and buses for airport pickups, weddings and corporate travel 24/7."
+        title="Car Rental Lagos & Abuja | Car Hire Nigeria — MRS"
+        description="Car rental Lagos & Abuja: airport, SUV, luxury, self-drive, chauffeur, wedding & corporate car hire across Nigeria. Daily & monthly rates. Book 24/7."
         path="/"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(homeJsonLd) }} />
@@ -159,11 +159,11 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="text-left">
               <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-                Premium <span className="text-luxury-gold">Car Hire Service</span> in Lagos & Abuja
+                <span className="text-luxury-gold">Car Rental in Lagos &amp; Abuja</span> — Car Hire Across Nigeria
               </h1>
               <p className="text-xl md:text-2xl mb-8 text-gray-200">
-                MRS Car Rental is your trusted car rental in Lagos and Abuja. 
-                Experience luxury chauffeur-driven transportation, available 24/7.
+                Affordable, luxury and SUV car hire in Lagos and Abuja with airport pickup,
+                self-drive, chauffeur service, wedding cars and corporate rentals — daily and monthly. Available 24/7.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <button
