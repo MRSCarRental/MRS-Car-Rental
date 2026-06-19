@@ -103,7 +103,7 @@ export default function Services() {
     <div className="min-h-screen pt-20">
       <Seo
         title="Car Hire Lagos & Abuja — Airport, Wedding, Corporate"
-        description="Airport car rental, wedding cars, chauffeur service, corporate & executive car hire in Lagos and Abuja. Self-drive and group travel across Nigeria."
+        description="Airport car rental, wedding cars, chauffeur service, corporate and executive car hire in Lagos and Abuja. SUV, luxury and group travel across Nigeria."
         path="/services"
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesJsonLd) }} />
