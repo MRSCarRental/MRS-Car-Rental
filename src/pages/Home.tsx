@@ -173,7 +173,7 @@ export default function Home() {
                 <span className="text-luxury-gold">Car Rental in Lagos Nigeria</span>
               </h1>
               <p className="text-xl md:text-2xl mb-8 text-gray-200">
-                Affordable car hire in Lagos and Abuja — airport pickup Lagos, airport pickup Abuja,
+                Affordable car hire in Lagos and Abuja - airport pickup Lagos, airport pickup Abuja,
                 luxury car rental, SUV rental, daily and weekly car rental.
                 Trusted chauffeur service across Lagos and Abuja, available 24/7.
               </p>
@@ -406,19 +406,18 @@ export default function Home() {
               Car Rental &amp; Car Hire Services Across Nigeria
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              MRS Car Rental offers car rental in Lagos, car rental in Abuja and car hire across Nigeria —
-              from cheap and affordable everyday rentals to luxury, SUV and executive vehicles.
+              MRS Car Rental offers car rental in Lagos, car rental in Abuja and car hire across Nigeria from cheap and affordable everyday rentals to luxury, SUV and executive vehicles.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div>
               <h3 className="text-xl font-semibold text-luxury-navy mb-2">Car Rental Lagos &amp; Car Hire Lagos</h3>
-              <p className="text-gray-600">Affordable car rental in Lagos and cheap car hire in Lagos for daily, weekly and monthly bookings — Victoria Island, Ikoyi, Lekki, Ikeja and Lagos Mainland.</p>
+              <p className="text-gray-600">Affordable car rental in Lagos and cheap car hire in Lagos for daily, weekly and monthly bookings - Victoria Island, Ikoyi, Lekki, Ikeja and Lagos Mainland.</p>
             </div>
             <div>
               <h3 className="text-xl font-semibold text-luxury-navy mb-2">Car Rental Abuja &amp; Car Hire Abuja</h3>
-              <p className="text-gray-600">Affordable car rental in Abuja with daily car rental Abuja rates — Wuse, Garki, Maitama, Asokoro and Abuja City Center.</p>
+              <p className="text-gray-600">Affordable car rental in Abuja with daily car rental Abuja rates - Wuse, Garki, Maitama, Asokoro and Abuja City Center.</p>
             </div>
             <div>
               <h3 className="text-xl font-semibold text-luxury-navy mb-2">Airport Car Rental Lagos &amp; Abuja</h3>
@@ -426,7 +425,7 @@ export default function Home() {
             </div>
             <div>
               <h3 className="text-xl font-semibold text-luxury-navy mb-2">SUV &amp; Luxury Car Rental Lagos</h3>
-              <p className="text-gray-600">SUV rental Lagos and luxury car rental Lagos — Toyota Prado, Honda Pilot, Mercedes-Benz E-Class and BMW 5 Series.</p>
+              <p className="text-gray-600">SUV rental Lagos and luxury car rental Lagos - Toyota Prado, Honda Pilot, Mercedes-Benz E-Class and BMW 5 Series.</p>
             </div>
             <div>
               <h3 className="text-xl font-semibold text-luxury-navy mb-2">Chauffeur Service Lagos &amp; Abuja</h3>
@@ -434,7 +433,7 @@ export default function Home() {
             </div>
             <div>
               <h3 className="text-xl font-semibold text-luxury-navy mb-2">Executive Car Rental Nigeria</h3>
-              <p className="text-gray-600">Executive car rental in Nigeria for boardrooms, conferences and government delegations — discreet, punctual and premium.</p>
+              <p className="text-gray-600">Executive car rental in Nigeria for boardrooms, conferences and government delegations - discreet, punctual and premium.</p>
             </div>
             <div>
               <h3 className="text-xl font-semibold text-luxury-navy mb-2">Monthly &amp; Daily Car Rental</h3>
@@ -442,7 +441,7 @@ export default function Home() {
             </div>
             <div>
               <h3 className="text-xl font-semibold text-luxury-navy mb-2">Wedding &amp; Corporate Car Rental</h3>
-              <p className="text-gray-600">Wedding car rental in Lagos and corporate car rental across Nigeria — luxury sedans, SUVs and group buses for events.</p>
+              <p className="text-gray-600">Wedding car rental in Lagos and corporate car rental across Nigeria - luxury sedans, SUVs and group buses for events.</p>
             </div>
           </div>
 
