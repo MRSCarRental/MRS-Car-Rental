@@ -1,5 +1,6 @@
 import { Users, Award, Clock, Shield, Car, MapPin } from 'lucide-react';
 import ceoImage from '@/assets/ceo-rahaman-olawale.jpg';
+import Seo from '@/components/Seo';
 
 const teamMembers = [
   {
@@ -63,6 +64,11 @@ const aboutJsonLd = {
 export default function About() {
   return (
     <div className="min-h-screen pt-20">
+      <Seo
+        title="About MRS Car Rental — Lagos & Abuja"
+        description="Learn about MRS Car Rental: 15+ years of premium chauffeur-driven car hire in Lagos and Abuja, trusted for safety, comfort and reliability."
+        path="/about"
+      />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutJsonLd) }} />
       {/* Hero Section */}
       <section className="py-20 bg-luxury-navy text-white">

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { MapPin, Phone, Mail, Clock, MessageCircle, Send, CheckCircle } from 'lucide-react';
 import { toast } from '@/hooks/use-toast';
+import Seo from '@/components/Seo';
 
 interface ContactFormData {
   name: string;
@@ -69,6 +70,11 @@ export default function Contact() {
 
   return (
     <div className="min-h-screen pt-20">
+      <Seo
+        title="Contact MRS Car Rental — Lagos & Abuja"
+        description="Get in touch with MRS Car Rental for bookings and enquiries. Call, WhatsApp or email us 24/7 for chauffeur-driven car hire in Lagos & Abuja."
+        path="/contact"
+      />
       {/* Hero Section */}
       <section className="py-20 bg-luxury-navy text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { ChevronDown, ChevronUp, HelpCircle } from 'lucide-react';
+import Seo from '@/components/Seo';
 
 const faqData = [
   {
@@ -139,6 +140,11 @@ export default function Faqs() {
 
   return (
     <div className="min-h-screen pt-20">
+      <Seo
+        title="FAQs — MRS Car Rental Booking & Policies"
+        description="Answers to common questions about booking, payments, cancellations, chauffeur service and vehicle options at MRS Car Rental Lagos & Abuja."
+        path="/faqs"
+      />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       {/* Hero Section */}
       <section className="py-20 bg-luxury-navy text-white">

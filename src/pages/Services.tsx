@@ -1,4 +1,5 @@
 import { Plane, Heart, Building, Users, MapPin, Car, CheckCircle } from 'lucide-react';
+import Seo from '@/components/Seo';
 
 const services = [
   {
@@ -100,6 +101,11 @@ export default function Services() {
 
   return (
     <div className="min-h-screen pt-20">
+      <Seo
+        title="Car Rental Services — Airport, Weddings & Corporate"
+        description="Airport transfers, wedding cars, corporate travel and city rentals across Lagos & Abuja with professional chauffeurs and 24/7 support."
+        path="/services"
+      />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesJsonLd) }} />
       {/* Hero Section */}
       <section className="py-20 bg-luxury-navy text-white">

@@ -119,6 +119,8 @@ export default function Layout({ children }: LayoutProps) {
                   isScrolled ? "text-luxury-navy" : "text-white"
                 )}
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+                aria-expanded={mobileMenuOpen}
               >
                 {mobileMenuOpen ? (
                   <X className="block h-6 w-6" aria-hidden="true" />
