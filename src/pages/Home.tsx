@@ -446,40 +446,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Lagos local-SEO neighborhoods */}
-          <div className="mt-16">
-            <h2 className="text-3xl font-bold text-luxury-navy mb-4 text-center">
-              Car Rental Lagos — Areas We Serve
-            </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto text-center mb-8">
-              We provide car rental in Lagos and car hire Lagos across every major neighborhood,
-              including same-day delivery and airport pickup Lagos.
-            </p>
-            <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 max-w-4xl mx-auto">
-              {[
-                'Victoria Island','Lekki','Ikoyi','Ikeja','Surulere','Yaba',
-                'Ajah','Chevron','Festac','Maryland','Lagos Island','Murtala Muhammed Airport',
-              ].map((area) => (
-                <li
-                  key={area}
-                  className="bg-luxury-cream text-luxury-navy text-center py-3 px-2 rounded-lg font-medium"
-                >
-                  Car Rental {area}
-                </li>
-              ))}
-            </ul>
-            <p className="text-base text-gray-600 max-w-3xl mx-auto text-center mt-8">
-              Popular searches we serve: car rental Lagos, car rental in Lagos Nigeria, cheap car rental Lagos,
-              luxury car rental Lagos, luxury car rental Abuja, SUV rental Lagos, SUV rental Abuja,
-              airport car rental Lagos, airport car rental Abuja, executive car rental Lagos,
-              executive car rental Abuja, chauffeur service Lagos, chauffeur service Abuja,
-              rent a car Lagos, rent a car Abuja, monthly car rental Lagos, monthly car rental Abuja,
-              daily car rental Lagos, daily car rental Abuja, Toyota Camry rental Lagos,
-              Toyota Prado rental Abuja, Lexus rental Lagos, wedding car rental Lagos,
-              corporate car rental Abuja, airport pickup Lagos, airport pickup Abuja,
-              affordable car hire Lagos and best car rental company in Lagos and Abuja.
-            </p>
-          </div>
         </div>
       </section>
     </div>
