@@ -64,6 +64,36 @@ const testimonials = [
     content: 'Reliable airport transfers every time. Their booking system is easy to use and the drivers are always punctual and courteous.',
     rating: 5,
   },
+  {
+    name: 'Chioma Nwosu',
+    role: 'CEO, TechStart',
+    content: 'We book executive car rentals monthly for our board meetings. MRS always delivers premium vehicles with professional chauffeurs. Outstanding service.',
+    rating: 5,
+  },
+  {
+    name: 'Emmanuel Ogundele',
+    role: 'Tour Operator',
+    content: 'Our clients love the Hiace buses for group tours. Clean, comfortable and the drivers know every route in Lagos. A reliable partner for our business.',
+    rating: 5,
+  },
+  {
+    name: 'Fatima Bello',
+    role: 'Wedding Planner',
+    content: 'The wedding car rental was flawless. The decorated luxury sedan arrived early and the chauffeur was so polite. The bride was thrilled!',
+    rating: 5,
+  },
+  {
+    name: 'Olumide Adeyemi',
+    role: 'Bank Manager',
+    content: 'Airport pickup from MMIA was seamless even at midnight. The driver tracked my flight and was waiting with a sign. Best airport car rental in Lagos.',
+    rating: 5,
+  },
+  {
+    name: 'Ngozi Eze',
+    role: 'Real Estate Agent',
+    content: 'I use MRS for client property viewings across Abuja. The SUVs are perfect for rough roads and my clients always comment on the comfort.',
+    rating: 5,
+  },
 ];
 
 const whyChooseUs = [
