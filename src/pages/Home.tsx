@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { MessageCircle, Star, Shield, Clock, Users, Car, CheckCircle } from 'lucide-react';
 import BookingForm from '@/components/BookingForm';
 import FleetCard from '@/components/FleetCard';
+import Seo from '@/components/Seo';
 import heroImage from '@/assets/hero-image.jpg';
 import saloonCarImage from '@/assets/saloon-car.jpg';
 import suvImage from '@/assets/suv.jpg';
@@ -141,6 +142,11 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
+      <Seo
+        title="MRS Car Rental — Car Hire in Lagos & Abuja"
+        description="Chauffeur-driven car hire in Lagos & Abuja. Book saloon cars, SUVs and buses for airport pickups, weddings and corporate travel 24/7."
+        path="/"
+      />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(homeJsonLd) }} />
       {/* Hero Section */}
       <section className="hero-section">

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Car, Users, Snowflake, User, Filter } from 'lucide-react';
 import FleetCard from '@/components/FleetCard';
+import Seo from '@/components/Seo';
 import saloonCarImage from '@/assets/saloon-car.jpg';
 import suvImage from '@/assets/suv.jpg';
 import hiaceImage from '@/assets/hiace.jpg';
@@ -119,6 +120,11 @@ export default function Inventory() {
 
   return (
     <div className="min-h-screen pt-20">
+      <Seo
+        title="Our Fleet — Saloon Cars, SUVs & Buses for Hire"
+        description="Browse the MRS Car Rental fleet: Toyota Camry, Honda Accord, Mercedes E-Class, SUVs, Hiace and Coaster buses available in Lagos and Abuja."
+        path="/inventory"
+      />
       {/* Hero Section */}
       <section className="py-20 bg-luxury-navy text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
