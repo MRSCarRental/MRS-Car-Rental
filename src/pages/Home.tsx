@@ -449,6 +449,38 @@ export default function Home() {
               <p className="text-gray-600">Wedding car rental in Lagos and corporate car rental across Nigeria — luxury sedans, SUVs and group buses for events.</p>
             </div>
           </div>
+
+          {/* Lagos local-SEO neighborhoods */}
+          <div className="mt-16">
+            <h2 className="text-3xl font-bold text-luxury-navy mb-4 text-center">
+              Car Rental Lagos — Areas We Serve
+            </h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto text-center mb-8">
+              We provide car rental in Lagos and car hire Lagos across every major neighborhood,
+              including same-day delivery and airport pickup Lagos.
+            </p>
+            <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 max-w-4xl mx-auto">
+              {[
+                'Victoria Island','Lekki','Ikoyi','Ikeja','Surulere','Yaba',
+                'Ajah','Chevron','Festac','Maryland','Lagos Island','Murtala Muhammed Airport',
+              ].map((area) => (
+                <li
+                  key={area}
+                  className="bg-luxury-cream text-luxury-navy text-center py-3 px-2 rounded-lg font-medium"
+                >
+                  Car Rental {area}
+                </li>
+              ))}
+            </ul>
+            <p className="text-base text-gray-600 max-w-3xl mx-auto text-center mt-8">
+              Popular searches we serve: car rental Lagos, car rental in Lagos Nigeria, cheap car rental Lagos,
+              self drive car rental Lagos, luxury car rental Lagos, SUV rental Lagos, airport car rental Lagos,
+              executive car rental Lagos, chauffeur service Lagos, rent a car Lagos, monthly car rental Lagos,
+              daily car rental Lagos, Toyota Camry rental Lagos, Toyota Prado rental Lagos, Lexus rental Lagos,
+              wedding car rental Lagos, corporate car rental Lagos, airport pickup Lagos, affordable car hire Lagos
+              and best car rental company Lagos.
+            </p>
+          </div>
         </div>
       </section>
     </div>
