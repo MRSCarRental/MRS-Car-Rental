@@ -121,8 +121,8 @@ export default function Inventory() {
   return (
     <div className="min-h-screen pt-20">
       <Seo
-        title="Our Fleet — Saloon Cars, SUVs & Buses for Hire"
-        description="Browse the MRS Car Rental fleet: Toyota Camry, Honda Accord, Mercedes E-Class, SUVs, Hiace and Coaster buses available in Lagos and Abuja."
+        title="SUV & Luxury Car Rental Lagos & Abuja — MRS Fleet"
+        description="SUV rental Lagos, luxury car rental Lagos, saloon cars and group buses for hire in Lagos and Abuja — Camry, Accord, Prado, Pilot, Mercedes E-Class, BMW 5."
         path="/inventory"
       />
       {/* Hero Section */}
