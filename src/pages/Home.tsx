@@ -131,6 +131,21 @@ const whyChooseUs = [
 
 export default function Home() {
   const [selectedCarType, setSelectedCarType] = useState<string>('');
+  const [isTestimonialsVisible, setIsTestimonialsVisible] = useState(false);
+  const testimonialsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsTestimonialsVisible(entry.isIntersecting);
+      },
+      { threshold: 0.2 }
+    );
+    if (testimonialsRef.current) {
+      observer.observe(testimonialsRef.current);
+    }
+    return () => observer.disconnect();
+  }, []);
 
   const handleFleetBooking = (carType: string) => {
     setSelectedCarType(carType);
