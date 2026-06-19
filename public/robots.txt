@@ -14,4 +14,4 @@ User-agent: *
 Allow: /
 Disallow: /crm/
 
-Sitemap: https://mrscarrental.com/sitemap.xml
+Sitemap: https://mrscarrental.lovable.app/sitemap.xml
