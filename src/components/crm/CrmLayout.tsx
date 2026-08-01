@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/sheet";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
-import { Calendar, Car, CheckSquare, CreditCard, FileText, LayoutDashboard, LogOut, Menu, Users } from "lucide-react";
+import { Calendar, Car, CheckSquare, CreditCard, FileText, Inbox, LayoutDashboard, LogOut, Menu, Users } from "lucide-react";
 
 export default function CrmLayout({ children }: { children: React.ReactNode }) {
   const navigate = useNavigate();
@@ -32,6 +32,7 @@ export default function CrmLayout({ children }: { children: React.ReactNode }) {
     { path: "/crm/cars", icon: Car, label: "Cars" },
     { path: "/crm/customers", icon: Users, label: "Customers" },
     { path: "/crm/bookings", icon: Calendar, label: "Bookings" },
+    { path: "/crm/requests", icon: Inbox, label: "Requests" },
     { path: "/crm/payments", icon: CreditCard, label: "Payments" },
     { path: "/crm/tasks", icon: CheckSquare, label: "Tasks" },
     { path: "/crm/invoices", icon: FileText, label: "Invoices" },

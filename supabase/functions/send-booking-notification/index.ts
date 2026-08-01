@@ -1,7 +1,13 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { Resend } from "npm:resend@2.0.0";
+import { createClient } from "npm:@supabase/supabase-js@2";
 
 const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
+
+const supabaseAdmin = createClient(
+  Deno.env.get("SUPABASE_URL")!,
+  Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!,
+);
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -31,10 +37,34 @@ const handler = async (req: Request): Promise<Response> => {
     const bookingData: BookingNotificationRequest = await req.json();
     console.log("Received booking notification request for:", bookingData.customerEmail);
 
+    // Persist the request first so a booking is never lost, even if email fails
+    const { data: savedRow, error: saveError } = await supabaseAdmin
+      .from("booking_requests")
+      .insert({
+        customer_name: bookingData.customerName,
+        customer_email: bookingData.customerEmail,
+        customer_phone: bookingData.customerPhone,
+        pickup_location: bookingData.pickupLocation,
+        destination: bookingData.destination,
+        car_type: bookingData.carType,
+        service_type: bookingData.serviceType,
+        pickup_date: bookingData.date,
+        pickup_time: bookingData.time,
+        passengers: bookingData.passengers,
+        special_requests: bookingData.specialRequests,
+      })
+      .select("id")
+      .single();
+
+    if (saveError) {
+      console.error("Failed to save booking request:", saveError.message);
+    }
+
     // Send notification email to admin/staff only
     const adminEmailResponse = await resend.emails.send({
       from: "MRS Car Rental <noreply@mrscarrental.com>",
       to: ["info@mrscarrental.com"],
+      reply_to: bookingData.customerEmail,
       subject: "New Booking Request",
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -70,12 +100,24 @@ const handler = async (req: Request): Promise<Response> => {
 
     if (adminEmailResponse.error) {
       console.error("Admin email error:", adminEmailResponse.error.message);
-      // Don't throw - return success so frontend always shows the WhatsApp screen
+    }
+
+    if (savedRow?.id) {
+      await supabaseAdmin
+        .from("booking_requests")
+        .update({
+          email_sent: !adminEmailResponse.error,
+          email_error: adminEmailResponse.error?.message ?? null,
+        })
+        .eq("id", savedRow.id);
     }
 
     return new Response(
       JSON.stringify({ 
-        success: true, 
+        success: true,
+        saved: Boolean(savedRow?.id),
+        emailSent: !adminEmailResponse.error,
+        emailError: adminEmailResponse.error?.message ?? null,
         message: "Booking request sent to admin successfully",
         adminEmailId: adminEmailResponse.data?.id
       }),
