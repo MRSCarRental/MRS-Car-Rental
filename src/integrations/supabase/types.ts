@@ -14,6 +14,60 @@ export type Database = {
   }
   public: {
     Tables: {
+      booking_requests: {
+        Row: {
+          car_type: string | null
+          created_at: string
+          customer_email: string | null
+          customer_name: string
+          customer_phone: string
+          destination: string | null
+          email_error: string | null
+          email_sent: boolean
+          id: string
+          passengers: string | null
+          pickup_date: string | null
+          pickup_location: string | null
+          pickup_time: string | null
+          service_type: string | null
+          special_requests: string | null
+        }
+        Insert: {
+          car_type?: string | null
+          created_at?: string
+          customer_email?: string | null
+          customer_name: string
+          customer_phone: string
+          destination?: string | null
+          email_error?: string | null
+          email_sent?: boolean
+          id?: string
+          passengers?: string | null
+          pickup_date?: string | null
+          pickup_location?: string | null
+          pickup_time?: string | null
+          service_type?: string | null
+          special_requests?: string | null
+        }
+        Update: {
+          car_type?: string | null
+          created_at?: string
+          customer_email?: string | null
+          customer_name?: string
+          customer_phone?: string
+          destination?: string | null
+          email_error?: string | null
+          email_sent?: boolean
+          id?: string
+          passengers?: string | null
+          pickup_date?: string | null
+          pickup_location?: string | null
+          pickup_time?: string | null
+          service_type?: string | null
+          special_requests?: string | null
+        }
+        Relationships: []
+      }
       bookings: {
         Row: {
           car_id: string
