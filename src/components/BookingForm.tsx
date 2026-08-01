@@ -118,25 +118,31 @@ export default function BookingForm({ preselectedCarType }: BookingFormProps) {
 
     setIsSubmitting(true);
 
-    // Fire-and-forget: send booking to admin via edge function (don't await result)
-    const { supabase } = await import("@/integrations/supabase/client");
-    supabase.functions.invoke('send-booking-notification', {
-      body: {
-        customerName: formData.fullName,
-        customerEmail: formData.email,
-        customerPhone: formData.phoneNumber,
-        pickupLocation: formData.pickupLocation,
-        destination: formData.destination,
-        carType: formData.carType,
-        serviceType: formData.serviceType,
-        date: formData.pickupDate,
-        time: formData.pickupTime,
-        passengers: formData.passengers,
-        specialRequests: formData.specialRequests,
-      }
-    }).catch((err) => console.error("Notification error:", err));
+    // Save + notify. We await so failures are logged instead of silently lost.
+    try {
+      const { supabase } = await import("@/integrations/supabase/client");
+      const { data, error } = await supabase.functions.invoke('send-booking-notification', {
+        body: {
+          customerName: formData.fullName,
+          customerEmail: formData.email,
+          customerPhone: formData.phoneNumber,
+          pickupLocation: formData.pickupLocation,
+          destination: formData.destination,
+          carType: formData.carType,
+          serviceType: formData.serviceType,
+          date: formData.pickupDate,
+          time: formData.pickupTime,
+          passengers: formData.passengers,
+          specialRequests: formData.specialRequests,
+        }
+      });
+      if (error) console.error("Booking notification failed:", error.message);
+      else if (data && data.emailSent === false) console.error("Booking email failed:", data.emailError);
+    } catch (err) {
+      console.error("Notification error:", err);
+    }
 
-    // Always show success screen immediately
+    // Always show success screen (customer confirms via WhatsApp)
     setIsSubmitting(false);
     setShowSuccess(true);
 

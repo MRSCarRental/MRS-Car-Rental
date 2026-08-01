@@ -22,6 +22,7 @@ import BookingDetails from "./pages/crm/BookingDetails";
 import Payments from "./pages/crm/Payments";
 import Tasks from "./pages/crm/Tasks";
 import Invoices from "./pages/crm/Invoices";
+import Requests from "./pages/crm/Requests";
 
 const queryClient = new QueryClient();
 
@@ -52,6 +53,7 @@ const App = () => (
           <Route path="/crm/payments" element={<Payments />} />
           <Route path="/crm/tasks" element={<Tasks />} />
           <Route path="/crm/invoices" element={<Invoices />} />
+          <Route path="/crm/requests" element={<Requests />} />
           
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
