@@ -1,7 +1,8 @@
-import { useState } from 'react';
-import { Calendar, Clock, MapPin, Car, Users, MessageSquare } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { Calendar, Clock, MapPin, Car, Users, MessageSquare, Loader2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { toast } from '@/hooks/use-toast';
+import { supabase } from '@/integrations/supabase/client';
 
 interface BookingFormData {
   fullName: string;
@@ -9,12 +10,23 @@ interface BookingFormData {
   email: string;
   pickupLocation: string;
   destination: string;
-  carType: string;
+  carId: string;
   serviceType: string;
   pickupDate: string;
+  returnDate: string;
   pickupTime: string;
   passengers: string;
   specialRequests: string;
+}
+
+interface AvailableCar {
+  id: string;
+  make: string;
+  model: string;
+  year: number;
+  daily_rate: number;
+  image_url: string | null;
+  status: string;
 }
 
 const initialFormData: BookingFormData = {
@@ -23,9 +35,10 @@ const initialFormData: BookingFormData = {
   email: '',
   pickupLocation: '',
   destination: '',
-  carType: '',
+  carId: '',
   serviceType: '',
   pickupDate: '',
+  returnDate: '',
   pickupTime: '',
   passengers: '1',
   specialRequests: '',
@@ -42,14 +55,6 @@ const pickupLocations = [
   'Wuse',
   'Garki',
   'Other Location',
-];
-
-const carTypes = [
-  'Saloon Car',
-  'SUV',
-  'Luxury Sedan',
-  'Hiace Bus (14 seats)',
-  'Coaster Bus (32 seats)',
 ];
 
 const serviceTypes = [
@@ -69,12 +74,49 @@ interface BookingFormProps {
 }
 
 export default function BookingForm({ preselectedCarType }: BookingFormProps) {
-  const [formData, setFormData] = useState<BookingFormData>({
-    ...initialFormData,
-    carType: preselectedCarType || '',
-  });
+  const [formData, setFormData] = useState<BookingFormData>(initialFormData);
+  const [cars, setCars] = useState<AvailableCar[]>([]);
+  const [carsLoading, setCarsLoading] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [showSuccess, setShowSuccess] = useState(false);
+
+  useEffect(() => {
+    let active = true;
+    (async () => {
+      const { data, error } = await supabase.functions.invoke('list-available-cars');
+      if (!active) return;
+      if (error) {
+        console.error('Failed to load cars:', error.message);
+      } else {
+        const loaded: AvailableCar[] = data?.cars ?? [];
+        setCars(loaded);
+        if (preselectedCarType) {
+          const match = loaded.find((c) =>
+            `${c.make} ${c.model}`.toLowerCase().includes(preselectedCarType.toLowerCase()),
+          );
+          if (match) setFormData((prev) => ({ ...prev, carId: match.id }));
+        }
+      }
+      setCarsLoading(false);
+    })();
+    return () => {
+      active = false;
+    };
+  }, [preselectedCarType]);
+
+  const selectedCar = cars.find((c) => c.id === formData.carId) ?? null;
+
+  const rentalDays = (() => {
+    if (!formData.pickupDate || !formData.returnDate) return 0;
+    const start = new Date(`${formData.pickupDate}T00:00:00`);
+    const end = new Date(`${formData.returnDate}T00:00:00`);
+    const days = Math.round((end.getTime() - start.getTime()) / 86_400_000);
+    return days > 0 ? days : 0;
+  })();
+
+  const estimatedTotal = selectedCar ? rentalDays * Number(selectedCar.daily_rate) : 0;
+
+  const formatNaira = (value: number) =>
+    new Intl.NumberFormat('en-NG', { style: 'currency', currency: 'NGN', maximumFractionDigits: 0 }).format(value);
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
@@ -90,8 +132,12 @@ export default function BookingForm({ preselectedCarType }: BookingFormProps) {
     if (!formData.phoneNumber.trim()) errors.push('Phone Number is required');
     if (!formData.email.trim()) errors.push('Email Address is required');
     if (!formData.pickupLocation) errors.push('Pickup Location is required');
-    if (!formData.carType) errors.push('Car Type is required');
+    if (!formData.carId) errors.push('Please select a car');
     if (!formData.pickupDate) errors.push('Pickup Date is required');
+    if (!formData.returnDate) errors.push('Return Date is required');
+    if (formData.pickupDate && formData.returnDate && rentalDays < 1) {
+      errors.push('The return date must be after the pickup date');
+    }
     if (!formData.pickupTime) errors.push('Pickup Time is required');
     
     // Email validation
@@ -118,87 +164,77 @@ export default function BookingForm({ preselectedCarType }: BookingFormProps) {
 
     setIsSubmitting(true);
 
-    // Save + notify. We await so failures are logged instead of silently lost.
-    try {
-      const { supabase } = await import("@/integrations/supabase/client");
-      const { data, error } = await supabase.functions.invoke('send-booking-notification', {
+    const carLabel = selectedCar ? `${selectedCar.make} ${selectedCar.model}` : '';
+
+    // Lead capture for the CRM Requests inbox (never blocks the payment flow).
+    supabase.functions
+      .invoke('send-booking-notification', {
         body: {
           customerName: formData.fullName,
           customerEmail: formData.email,
           customerPhone: formData.phoneNumber,
           pickupLocation: formData.pickupLocation,
           destination: formData.destination,
-          carType: formData.carType,
+          carType: carLabel,
           serviceType: formData.serviceType,
           date: formData.pickupDate,
           time: formData.pickupTime,
           passengers: formData.passengers,
           specialRequests: formData.specialRequests,
-        }
+        },
+      })
+      .catch((err) => console.error('Notification error:', err));
+
+    // Price is calculated and validated server-side; the browser never sends an amount.
+    try {
+      const { data, error } = await supabase.functions.invoke('create-squad-payment', {
+        body: {
+          carId: formData.carId,
+          startDate: formData.pickupDate,
+          endDate: formData.returnDate,
+          customerName: formData.fullName,
+          customerPhone: formData.phoneNumber,
+          customerEmail: formData.email,
+          pickupLocation: formData.pickupLocation,
+          destination: formData.destination,
+          serviceType: formData.serviceType,
+          passengers: formData.passengers,
+          specialRequests: formData.specialRequests,
+          origin: window.location.origin,
+        },
       });
-      if (error) console.error("Booking notification failed:", error.message);
-      else if (data && data.emailSent === false) console.error("Booking email failed:", data.emailError);
+
+      let message = data?.error as string | undefined;
+      if (error) {
+        try {
+          const ctx = (error as { context?: Response }).context;
+          if (ctx) message = JSON.parse(await ctx.text())?.error;
+        } catch {
+          /* fall through to the generic message */
+        }
+      }
+
+      if (data?.checkoutUrl) {
+        window.location.href = data.checkoutUrl;
+        return;
+      }
+
+      toast({
+        title: 'Payment could not be started',
+        description: message || 'Please try again, or reach us on WhatsApp to book manually.',
+        variant: 'destructive',
+      });
     } catch (err) {
-      console.error("Notification error:", err);
+      console.error('Payment initialization error:', err);
+      toast({
+        title: 'Payment could not be started',
+        description: 'Please check your connection and try again.',
+        variant: 'destructive',
+      });
+    } finally {
+      setIsSubmitting(false);
     }
-
-    // Always show success screen (customer confirms via WhatsApp)
-    setIsSubmitting(false);
-    setShowSuccess(true);
-
-    // Reset form after 10 seconds
-    setTimeout(() => {
-      setShowSuccess(false);
-      setFormData(initialFormData);
-    }, 10000);
   };
-
-  if (showSuccess) {
-    return (
-      <div className="bg-white rounded-xl shadow-elegant p-8 text-center">
-        <div className="w-16 h-16 bg-success-green/10 rounded-full flex items-center justify-center mx-auto mb-4">
-          <Car className="h-8 w-8 text-success-green" />
-        </div>
-        <h3 className="text-2xl font-bold text-luxury-navy mb-4">
-          Booking Confirmed!
-        </h3>
-        <div className="bg-luxury-cream rounded-lg p-6 mb-6 text-left max-w-md mx-auto">
-          <h4 className="font-semibold text-luxury-navy mb-3">Booking Details:</h4>
-          <div className="space-y-2 text-sm">
-            <p><strong>Name:</strong> {formData.fullName}</p>
-            <p><strong>Phone:</strong> {formData.phoneNumber}</p>
-            <p><strong>Email:</strong> {formData.email}</p>
-            <p><strong>Pickup:</strong> {formData.pickupLocation}</p>
-            {formData.destination && <p><strong>Destination:</strong> {formData.destination}</p>}
-            <p><strong>Car Type:</strong> {formData.carType}</p>
-            <p><strong>Date:</strong> {formData.pickupDate} at {formData.pickupTime}</p>
-            <p><strong>Passengers:</strong> {formData.passengers}</p>
-            {formData.specialRequests && <p><strong>Special Requests:</strong> {formData.specialRequests}</p>}
-          </div>
-        </div>
-        <p className="text-gray-600 mb-4">
-          Your booking request has been received! Kindly message us on WhatsApp with your booking details to confirm your booking. Thank you!
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <a
-            href="https://wa.me/2348026149390"
-            className="whatsapp-btn justify-center"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <MessageSquare className="h-5 w-5" />
-            WhatsApp Us
-          </a>
-          <a
-            href="tel:+2348026149390"
-            className="btn-outline flex items-center justify-center gap-2"
-          >
-            Call Now
-          </a>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="bg-white rounded-xl shadow-elegant p-8">
@@ -305,25 +341,26 @@ export default function BookingForm({ preselectedCarType }: BookingFormProps) {
             />
           </div>
 
-          {/* Car Type */}
+          {/* Car */}
           <div>
-            <label htmlFor="carType" className="block text-sm font-medium text-gray-700 mb-2">
-              Car Type *
+            <label htmlFor="carId" className="block text-sm font-medium text-gray-700 mb-2">
+              Car *
             </label>
             <div className="relative">
               <Car className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
               <select
-                id="carType"
-                name="carType"
-                value={formData.carType}
+                id="carId"
+                name="carId"
+                value={formData.carId}
                 onChange={handleInputChange}
                 className="form-select pl-12"
+                disabled={carsLoading}
                 required
               >
-                <option value="">Select car type</option>
-                {carTypes.map((type) => (
-                  <option key={type} value={type}>
-                    {type}
+                <option value="">{carsLoading ? 'Loading cars…' : 'Select a car'}</option>
+                {cars.map((car) => (
+                  <option key={car.id} value={car.id}>
+                    {car.make} {car.model} ({car.year}) - {formatNaira(Number(car.daily_rate))}/day
                   </option>
                 ))}
               </select>
@@ -366,6 +403,26 @@ export default function BookingForm({ preselectedCarType }: BookingFormProps) {
                 onChange={handleInputChange}
                 className="form-input pl-12"
                 min={new Date().toISOString().split('T')[0]}
+                required
+              />
+            </div>
+          </div>
+
+          {/* Return Date */}
+          <div>
+            <label htmlFor="returnDate" className="block text-sm font-medium text-gray-700 mb-2">
+              Return Date *
+            </label>
+            <div className="relative">
+              <Calendar className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
+              <input
+                type="date"
+                id="returnDate"
+                name="returnDate"
+                value={formData.returnDate}
+                onChange={handleInputChange}
+                className="form-input pl-12"
+                min={formData.pickupDate || new Date().toISOString().split('T')[0]}
                 required
               />
             </div>
@@ -434,16 +491,48 @@ export default function BookingForm({ preselectedCarType }: BookingFormProps) {
           </p>
         </div>
 
+        {/* Price summary (final amount is recalculated and verified on our server) */}
+        {selectedCar && (
+          <div className="bg-luxury-cream rounded-lg p-6">
+            <h4 className="font-semibold text-luxury-navy mb-3">Rental Summary</h4>
+            <div className="space-y-2 text-sm">
+              <div className="flex justify-between">
+                <span>{selectedCar.make} {selectedCar.model}</span>
+                <span>{formatNaira(Number(selectedCar.daily_rate))}/day</span>
+              </div>
+              <div className="flex justify-between">
+                <span>Duration</span>
+                <span>{rentalDays > 0 ? `${rentalDays} day${rentalDays > 1 ? 's' : ''}` : 'Select your dates'}</span>
+              </div>
+              {rentalDays > 0 && (
+                <div className="flex justify-between border-t border-luxury-navy/10 pt-2 text-base font-bold text-luxury-navy">
+                  <span>Total</span>
+                  <span>{formatNaira(estimatedTotal)}</span>
+                </div>
+              )}
+            </div>
+            <p className="text-xs text-gray-500 mt-3">
+              The final amount is confirmed by our system before payment.
+            </p>
+          </div>
+        )}
+
         <button
           type="submit"
           disabled={isSubmitting}
           className={cn(
-            "w-full btn-primary text-lg py-4",
+            "w-full btn-primary text-lg py-4 flex items-center justify-center gap-2",
             isSubmitting && "opacity-50 cursor-not-allowed"
           )}
         >
-          {isSubmitting ? "Submitting..." : "Book My Ride Now"}
+          {isSubmitting && <Loader2 className="h-5 w-5 animate-spin" />}
+          {isSubmitting ? "Starting secure payment…" : "Book & Pay Securely"}
         </button>
+
+        <p className="text-center text-sm text-gray-500 flex items-center justify-center gap-2">
+          <MessageSquare className="h-4 w-4" />
+          Prefer to pay offline? <a href="https://wa.me/2348026149390" target="_blank" rel="noopener noreferrer" className="text-luxury-navy font-medium underline">Message us on WhatsApp</a>
+        </p>
       </form>
     </div>
   );

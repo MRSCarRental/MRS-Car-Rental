@@ -20,6 +20,9 @@ type Payment = {
   payment_date: string;
   status: string;
   method?: string;
+  provider?: string | null;
+  provider_reference?: string | null;
+  provider_transaction_id?: string | null;
   bookings: {
     customers: { name: string };
     cars: { make: string; model: string };
@@ -76,6 +79,7 @@ export default function Payments() {
                   <TableHead>Amount</TableHead>
                   <TableHead>Date</TableHead>
                   <TableHead>Method</TableHead>
+                  <TableHead>Reference</TableHead>
                   <TableHead>Status</TableHead>
                 </TableRow>
               </TableHeader>
@@ -91,8 +95,19 @@ export default function Payments() {
                     <TableCell>₦{payment.amount.toFixed(2)}</TableCell>
                     <TableCell>{format(new Date(payment.payment_date), "MMM dd, yyyy")}</TableCell>
                     <TableCell>{payment.method || "—"}</TableCell>
+                    <TableCell className="font-mono text-xs">
+                      {payment.provider_reference || "—"}
+                    </TableCell>
                     <TableCell>
-                      <Badge className={payment.status === "paid" ? "bg-green-500" : "bg-yellow-500"}>
+                      <Badge
+                        className={
+                          payment.status === "paid"
+                            ? "bg-green-500"
+                            : payment.status === "refunded"
+                            ? "bg-slate-500"
+                            : "bg-yellow-500"
+                        }
+                      >
                         {payment.status}
                       </Badge>
                     </TableCell>

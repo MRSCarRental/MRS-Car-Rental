@@ -5,3 +5,15 @@ verify_jwt = false
 
 [functions.send-booking-notification]
 verify_jwt = false
+
+[functions.list-available-cars]
+verify_jwt = false
+
+[functions.create-squad-payment]
+verify_jwt = false
+
+[functions.squad-webhook]
+verify_jwt = false
+
+[functions.payment-status]
+verify_jwt = false

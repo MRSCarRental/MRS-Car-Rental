@@ -10,6 +10,7 @@ import Services from "@/pages/Services";
 import Inventory from "@/pages/Inventory";
 import Faqs from "@/pages/Faqs";
 import Contact from "@/pages/Contact";
+import PaymentStatus from "@/pages/PaymentStatus";
 import NotFound from "./pages/NotFound";
 import CrmLogin from "./pages/crm/Login";
 import CrmSetup from "./pages/crm/Setup";
@@ -40,6 +41,7 @@ const App = () => (
           <Route path="/inventory" element={<Layout><Inventory /></Layout>} />
           <Route path="/faqs" element={<Layout><Faqs /></Layout>} />
           <Route path="/contact" element={<Layout><Contact /></Layout>} />
+          <Route path="/payment-status" element={<Layout><PaymentStatus /></Layout>} />
           
           {/* CRM Routes */}
           <Route path="/crm/setup" element={<CrmSetup />} />
