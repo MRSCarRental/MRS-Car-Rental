@@ -216,28 +216,46 @@ export type Database = {
           amount: number
           booking_id: string
           created_at: string | null
+          currency: string
           id: string
           method: string | null
+          paid_at: string | null
           payment_date: string
+          provider: string
+          provider_reference: string | null
+          provider_transaction_id: string | null
           status: Database["public"]["Enums"]["payment_status"] | null
+          updated_at: string
         }
         Insert: {
           amount: number
           booking_id: string
           created_at?: string | null
+          currency?: string
           id?: string
           method?: string | null
+          paid_at?: string | null
           payment_date: string
+          provider?: string
+          provider_reference?: string | null
+          provider_transaction_id?: string | null
           status?: Database["public"]["Enums"]["payment_status"] | null
+          updated_at?: string
         }
         Update: {
           amount?: number
           booking_id?: string
           created_at?: string | null
+          currency?: string
           id?: string
           method?: string | null
+          paid_at?: string | null
           payment_date?: string
+          provider?: string
+          provider_reference?: string | null
+          provider_transaction_id?: string | null
           status?: Database["public"]["Enums"]["payment_status"] | null
+          updated_at?: string
         }
         Relationships: [
           {
@@ -330,6 +348,15 @@ export type Database = {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
           _user_id: string
+        }
+        Returns: boolean
+      }
+      is_car_available: {
+        Args: {
+          _car_id: string
+          _end_date: string
+          _exclude_booking_id?: string
+          _start_date: string
         }
         Returns: boolean
       }
