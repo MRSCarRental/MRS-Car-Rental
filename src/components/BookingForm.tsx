@@ -408,6 +408,26 @@ export default function BookingForm({ preselectedCarType }: BookingFormProps) {
             </div>
           </div>
 
+          {/* Return Date */}
+          <div>
+            <label htmlFor="returnDate" className="block text-sm font-medium text-gray-700 mb-2">
+              Return Date *
+            </label>
+            <div className="relative">
+              <Calendar className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
+              <input
+                type="date"
+                id="returnDate"
+                name="returnDate"
+                value={formData.returnDate}
+                onChange={handleInputChange}
+                className="form-input pl-12"
+                min={formData.pickupDate || new Date().toISOString().split('T')[0]}
+                required
+              />
+            </div>
+          </div>
+
           {/* Pickup Time */}
           <div>
             <label htmlFor="pickupTime" className="block text-sm font-medium text-gray-700 mb-2">
