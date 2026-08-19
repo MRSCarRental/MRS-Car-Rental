@@ -491,16 +491,48 @@ export default function BookingForm({ preselectedCarType }: BookingFormProps) {
           </p>
         </div>
 
+        {/* Price summary (final amount is recalculated and verified on our server) */}
+        {selectedCar && (
+          <div className="bg-luxury-cream rounded-lg p-6">
+            <h4 className="font-semibold text-luxury-navy mb-3">Rental Summary</h4>
+            <div className="space-y-2 text-sm">
+              <div className="flex justify-between">
+                <span>{selectedCar.make} {selectedCar.model}</span>
+                <span>{formatNaira(Number(selectedCar.daily_rate))}/day</span>
+              </div>
+              <div className="flex justify-between">
+                <span>Duration</span>
+                <span>{rentalDays > 0 ? `${rentalDays} day${rentalDays > 1 ? 's' : ''}` : 'Select your dates'}</span>
+              </div>
+              {rentalDays > 0 && (
+                <div className="flex justify-between border-t border-luxury-navy/10 pt-2 text-base font-bold text-luxury-navy">
+                  <span>Total</span>
+                  <span>{formatNaira(estimatedTotal)}</span>
+                </div>
+              )}
+            </div>
+            <p className="text-xs text-gray-500 mt-3">
+              The final amount is confirmed by our system before payment.
+            </p>
+          </div>
+        )}
+
         <button
           type="submit"
           disabled={isSubmitting}
           className={cn(
-            "w-full btn-primary text-lg py-4",
+            "w-full btn-primary text-lg py-4 flex items-center justify-center gap-2",
             isSubmitting && "opacity-50 cursor-not-allowed"
           )}
         >
-          {isSubmitting ? "Submitting..." : "Book My Ride Now"}
+          {isSubmitting && <Loader2 className="h-5 w-5 animate-spin" />}
+          {isSubmitting ? "Starting secure payment…" : "Book & Pay Securely"}
         </button>
+
+        <p className="text-center text-sm text-gray-500 flex items-center justify-center gap-2">
+          <MessageSquare className="h-4 w-4" />
+          Prefer to pay offline? <a href="https://wa.me/2348026149390" target="_blank" rel="noopener noreferrer" className="text-luxury-navy font-medium underline">Message us on WhatsApp</a>
+        </p>
       </form>
     </div>
   );
