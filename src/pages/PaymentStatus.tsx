@@ -71,8 +71,7 @@ export default function PaymentStatus() {
       <Seo
         title="Payment Status | MRS Car Rental"
         description="Check the status of your MRS Car Rental booking payment."
-        canonical="https://mrscarrental.lovable.app/payment-status"
-        noindex
+        path="/payment-status"
       />
       <main className="min-h-[70vh] bg-luxury-cream py-16 px-4">
         <div className="max-w-xl mx-auto bg-white rounded-xl shadow-elegant p-8 text-center">
