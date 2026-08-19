@@ -341,25 +341,26 @@ export default function BookingForm({ preselectedCarType }: BookingFormProps) {
             />
           </div>
 
-          {/* Car Type */}
+          {/* Car */}
           <div>
-            <label htmlFor="carType" className="block text-sm font-medium text-gray-700 mb-2">
-              Car Type *
+            <label htmlFor="carId" className="block text-sm font-medium text-gray-700 mb-2">
+              Car *
             </label>
             <div className="relative">
               <Car className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
               <select
-                id="carType"
-                name="carType"
-                value={formData.carType}
+                id="carId"
+                name="carId"
+                value={formData.carId}
                 onChange={handleInputChange}
                 className="form-select pl-12"
+                disabled={carsLoading}
                 required
               >
-                <option value="">Select car type</option>
-                {carTypes.map((type) => (
-                  <option key={type} value={type}>
-                    {type}
+                <option value="">{carsLoading ? 'Loading cars…' : 'Select a car'}</option>
+                {cars.map((car) => (
+                  <option key={car.id} value={car.id}>
+                    {car.make} {car.model} ({car.year}) - {formatNaira(Number(car.daily_rate))}/day
                   </option>
                 ))}
               </select>
