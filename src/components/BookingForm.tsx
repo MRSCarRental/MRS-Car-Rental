@@ -1,7 +1,8 @@
-import { useState } from 'react';
-import { Calendar, Clock, MapPin, Car, Users, MessageSquare } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { Calendar, Clock, MapPin, Car, Users, MessageSquare, Loader2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { toast } from '@/hooks/use-toast';
+import { supabase } from '@/integrations/supabase/client';
 
 interface BookingFormData {
   fullName: string;
@@ -9,12 +10,23 @@ interface BookingFormData {
   email: string;
   pickupLocation: string;
   destination: string;
-  carType: string;
+  carId: string;
   serviceType: string;
   pickupDate: string;
+  returnDate: string;
   pickupTime: string;
   passengers: string;
   specialRequests: string;
+}
+
+interface AvailableCar {
+  id: string;
+  make: string;
+  model: string;
+  year: number;
+  daily_rate: number;
+  image_url: string | null;
+  status: string;
 }
 
 const initialFormData: BookingFormData = {
@@ -23,9 +35,10 @@ const initialFormData: BookingFormData = {
   email: '',
   pickupLocation: '',
   destination: '',
-  carType: '',
+  carId: '',
   serviceType: '',
   pickupDate: '',
+  returnDate: '',
   pickupTime: '',
   passengers: '1',
   specialRequests: '',
@@ -42,14 +55,6 @@ const pickupLocations = [
   'Wuse',
   'Garki',
   'Other Location',
-];
-
-const carTypes = [
-  'Saloon Car',
-  'SUV',
-  'Luxury Sedan',
-  'Hiace Bus (14 seats)',
-  'Coaster Bus (32 seats)',
 ];
 
 const serviceTypes = [
